@@ -38,8 +38,8 @@ body {
 }
 
 .btn-black {
-    background: white;
-    color: black;
+    background: black;
+    color: white;
 }
 
 .shop-now-button:hover,
@@ -70,6 +70,14 @@ body {
 	z-index: -1;
 }
 
+.color-box {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 1px solid #999;
+    margin-right: 5px;
+}
+
 /* -------------------------------- Media Queries */
 
 /* Slightly larger container on xl screens */
@@ -77,6 +85,8 @@ body {
     .container {
       max-width: 80%;
     }
+
+    
 }
 
 /* fixed top navbar only on medium and up */
@@ -97,10 +107,14 @@ body {
 /* pad the top a bit when navbar is collapsed on mobile */
 @media (max-width: 991px) {
     .header-container {
-        padding-top: 84px;
+        padding-top: 116px;
     }
 
     body {
-        height: calc(100vh - 84px);
+        height: calc(100vh - 116px);
+    }
+
+    .navbar {
+        max-height: 11rem;
     }
 }

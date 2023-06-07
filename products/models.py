@@ -28,5 +28,10 @@ class Product(models.Model):
         max_digits=6, decimal_places=2, null=True, blank=True)
     image = models.ImageField(null=True, blank=True)
 
+    # Customization fields
+    main_color = models.CharField(max_length=50, null=True, blank=True)
+    wording_color = models.CharField(max_length=50, null=True, blank=True)
+    writing = models.CharField(max_length=100, null=True, blank=True)
+
     def __str__(self):
         return self.name

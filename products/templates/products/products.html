@@ -20,7 +20,6 @@
         </div>
         <div class="row">
             <div class="product-container col-10 offset-1">
-                <div class="row mt-1 mb-2"></div>
                 <div class="row">
                     {% for product in products %}
                     <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
@@ -40,7 +39,7 @@
                             <div class="card-footer bg-white pt-0 border-0 text-left">
                                 <div class="row">
                                     <div class="col">
-                                        <p class="lead mb-0 text-left font-weight-bold">${{ product.price }}</p>
+                                        <p class="lead mb-0 text-left font-weight-bold">£{{ product.price }}</p>
                                         {% if product.rating %}
                                             <small class="text-muted"><i class="fas fa-star mr-1"></i>{{ product.rating }} / 5</small>
                                         {% else %}

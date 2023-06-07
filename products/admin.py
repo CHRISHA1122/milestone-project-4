@@ -11,6 +11,9 @@ class ProductAdmin(admin.ModelAdmin):
         'price',
         'rating',
         'image',
+        'main_color',
+        'wording_color',
+        'writing',
     )
 
 
