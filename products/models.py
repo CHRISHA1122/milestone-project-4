@@ -78,9 +78,10 @@ class Product(models.Model):
             ]
 
     def save(self, *args, **kwargs):
-        self._meta.get_field('main_color').choices = self.get_color_choices()
         self._meta.get_field(
-            'wording_color').choices = self.get_color_choices()
+            'main_color').choices = self.get_main_color_choices()
+        self._meta.get_field(
+            'wording_color').choices = self.get_wording_color_choices()
         super().save(*args, **kwargs)
 
     def __str__(self):

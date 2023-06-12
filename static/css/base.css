@@ -5,6 +5,7 @@ html {
 body {
     background: url('/media/bmdesigns-logo-2.jpeg') no-repeat center;
     background-size: cover;
+    background-color: #272727;
     height: calc(100vh - 164px);
     color: black;
     font-family: 'Lato';

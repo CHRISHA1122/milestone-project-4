@@ -43,14 +43,14 @@
       <div id="topnav" class="row bg-white d-none d-lg-flex">
         <div class="col-12 col-lg-4 my-auto py-1 py-lg-0 text-center text-lg-left">
           <a href="{% url 'home' %}" class="nav-link main-logo-link">
-            <h2 class="logo-font text-black my-0">BMDesignsgoodsstudio</h2>
+            <h2 class="logo-font text-black my-0"><strong>BMDesignsgoodsstudio</strong></h2>
           </a>
         </div>
         <!-- Bootstrap form for search bar -->
         <div class="col-12 col-lg-4 my-auto py-1 py-lg-0 d-flex justify-content-end">
           <form method="GET" action="">
             <div class="input-group w-100">
-                <input class="form-control border border-black rounded-0" type="text" name="q" placeholder="Search our site">
+                <input class="form-control border border-black rounded-0" type="text" name="q" placeholder="Search products">
                 <div class="input-group-append">
                     <button class="form-control btn btn-black border border-black rounded-0" type="submit">
                         <span class="icon">
@@ -68,7 +68,7 @@
                 <a class="text-black nav-link" href="#" id="user-options" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <div class="text-center">
                         <div><i class="fas fa-user fa-lg"></i></div>
-                        <p class="my-0">My Account</p>
+                        <p class="my-0">Account</p>
                     </div>
                 </a>
                 <div class="dropdown-menu border-0" aria-labelledby="user-options">
@@ -76,7 +76,7 @@
                         {% if request.user.is_superuser %}
                             <a href="" class="dropdown-item">Product Management</a>
                         {% endif %}
-                        <a href="" class="dropdown-item">My Profile</a>
+                        <a href="" class="dropdown-item">Profile</a>
                         <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
                     {% else %}
                         <a href="{% url 'account_signup' %}" class="dropdown-item">Register</a>
@@ -90,9 +90,9 @@
                         <div><i class="fas fa-shopping-bag fa-lg"></i></div>
                         <p class="my-0">
                             {% if grand_total %}
-                                ${{ grand_total|floatformat:2 }}
+                                £{{ grand_total|floatformat:2 }}
                             {% else %}
-                                $0.00
+                                £0.00
                             {% endif %}
                         </p>
                     </div>
@@ -126,7 +126,7 @@
       <div class="row bg-white pt-lg-2 d-none d-lg-flex">
         <div class="col-12 col-lg-4 my-auto py-1 py-lg-0 text-center text-lg-left">
           <a href="{% url 'home' %}" class="nav-link main-logo-link">
-              <h2 class="logo-font text-black my-0">BMDesignsgoodsstudio</h2>
+              <h2 class="logo-font text-black my-0"><strong>BMDesignsgoodsstudio</strong></h2>
           </a>
       </div>
       <div class="col-12 col-lg-4 text-center logo-font text-black my-auto py-1 py-lg-0">
