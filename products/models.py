@@ -1,8 +1,10 @@
 from django.db import models
+from django.forms import inlineformset_factory
 
 # Create models
 
 
+# Category Model
 class Category(models.Model):
 
     class Meta:
@@ -18,6 +20,7 @@ class Category(models.Model):
         return self.friendly_name
 
 
+# Product Model
 class Product(models.Model):
     category = models.ForeignKey(
         'Category', null=True, blank=True, on_delete=models.SET_NULL)
@@ -27,9 +30,17 @@ class Product(models.Model):
     rating = models.DecimalField(
         max_digits=6, decimal_places=2, null=True, blank=True)
     image = models.ImageField(null=True, blank=True)
-
-    # Customization fields
     customizable = models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.name
+
+
+# Customization Model
+class CustomizableProduct(models.Model):
+    product = models.OneToOneField(Product, on_delete=models.CASCADE)
+    category = models.ForeignKey(
+        Category, null=True, blank=True, on_delete=models.SET_NULL)
     main_color = models.CharField(
         max_length=50, null=True, blank=True, choices=[])
     wording_color = models.CharField(
@@ -38,13 +49,13 @@ class Product(models.Model):
 
     def get_main_color_choices(self):
 
-        if self.category.name == 'note_books':
+        if self.category and self.category.name == 'note_books':
             return [
                 ('red', 'Red'),
                 ('blue', 'Blue'),
             ]
 
-        elif self.category.name == 'toiletries':
+        elif self.category and self.category.name == 'toiletries':
             return [
                 ('black', 'Black'),
                 ('white', 'White'),
@@ -58,14 +69,14 @@ class Product(models.Model):
 
     def get_wording_color_choices(self):
 
-        if self.category.name == 'note_books':
+        if self.category and self.category.name == 'note_books':
             return [
                 ('black', 'Black'),
                 ('white', 'White',),
                 ('gray', 'Gray'),
             ]
 
-        elif self.category.name == 'toiletries':
+        elif self.category and self.category.name == 'toiletries':
             return [
                 ('black', 'Black'),
                 ('white', 'White'),
@@ -85,4 +96,4 @@ class Product(models.Model):
         super().save(*args, **kwargs)
 
     def __str__(self):
-        return self.name
+        return f"Customizable {self.product.name}"

@@ -43,14 +43,14 @@
                     <p class="mt-3">{{ product.description }}</p>
 
                     <!-- Customization fields -->
-                    {% if product.customizable %}
+                    {% if product.customizableproduct %}
                     <div class="form-group">
                         <label for="main-color">Main Colour:</label>
                         <select class="form-control" id="main-color" name="main_color">
-                            <option value="" {% if not product.main_color %}selected{% endif %}>Choose a colour</option>
-                            {% for color_value, color_label in product.get_main_color_choices %}
+                            <option value="" {% if not product.customizableproduct.main_color %}selected{% endif %}>Choose a colour</option>
+                            {% for color_value, color_label in product.customizableproduct.get_main_color_choices %}
                             <option value="{{ color_value }}"
-                                {% if product.main_color == color_value %}selected{% endif %}>
+                                {% if product.customizableproduct.main_color == color_value %}selected{% endif %}>
                                 <span class="color-box" style="background-color: {{ color_value }};"></span>
                                 {{ color_label }}
                             </option>
@@ -60,11 +60,11 @@
                     <div class="form-group">
                         <label for="wording-color">Wording Colour:</label>
                         <select class="form-control" id="wording-color" name="wording_color">
-                            <option value="" {% if not product.wording_color %}selected{% endif %}>Choose a colour
+                            <option value="" {% if not product.customizableproduct.wording_color %}selected{% endif %}>Choose a colour
                             </option>
-                            {% for color_value, color_label in product.get_wording_color_choices %}
+                            {% for color_value, color_label in product.customizableproduct.get_wording_color_choices %}
                             <option value="{{ color_value }}"
-                                {% if product.wording_color == color_value %}selected{% endif %}>
+                                {% if product.customizableproduct.wording_color == color_value %}selected{% endif %}>
                                 <span class="color-box" style="background-color: {{ color_value }};"></span>
                                 {{ color_label }}
                             </option>

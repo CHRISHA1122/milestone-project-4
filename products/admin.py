@@ -1,7 +1,14 @@
 from django.contrib import admin
-from .models import Product, Category
+from .models import Product, Category, CustomizableProduct
 
 # Register models
+
+
+class CustomizableProductInline(admin.StackedInline):
+    model = CustomizableProduct
+    can_delete = False
+    verbose_name_plural = 'Customizable Product'
+    fk_name = 'product'
 
 
 class ProductAdmin(admin.ModelAdmin):
@@ -11,11 +18,24 @@ class ProductAdmin(admin.ModelAdmin):
         'price',
         'rating',
         'image',
-        'customizable',
-        'main_color',
-        'wording_color',
-        'writing',
+        'customizable'
     )
+
+    list_editable = ('customizable',)
+    inlines = (CustomizableProductInline,)
+
+    def save_model(self, request, obj, form, change):
+        if obj.customizable:
+            try:
+                obj.customizableproduct
+            except CustomizableProduct.DoesNotExist:
+                CustomizableProduct.objects.create(product=obj)
+        else:
+            try:
+                obj.customizableproduct.delete()
+            except CustomizableProduct.DoesNotExist:
+                pass
+        super().save_model(request, obj, form, change)
 
 
 class CategoryAdmin(admin.ModelAdmin):
