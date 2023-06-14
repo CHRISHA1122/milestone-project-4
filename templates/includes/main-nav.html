@@ -10,7 +10,7 @@
                 <a href="" class="dropdown-item">By Price</a>
                 <a href="" class="dropdown-item ">By Rating</a>
                 <a href="" class="dropdown-item ">By Category</a>
-                <a href="" class="dropdown-item">All Products</a>
+                <a href="{% url 'products' %}" class="dropdown-item">All Products</a>
             </div>
         </li>
 
@@ -19,9 +19,9 @@
                 Specials
             </a>
             <div class="dropdown-menu border-0" aria-labelledby="specials-link">
-                <a href="" class="dropdown-item">New Arrivals</a>
-                <a href="" class="dropdown-item">Deals</a>
-                <a href="" class="dropdown-item">All Specials</a>
+                <a href="{% url 'products' %}?category=new_arrivals" class="dropdown-item">New Arrivals</a>
+                <a href="{% url 'products' %}?category=deals" class="dropdown-item">Deals</a>
+                <a href="{% url 'products' %}?category=new_arrivals,deals" class="dropdown-item">All Specials</a>
             </div>
         </li>
 
@@ -30,9 +30,9 @@
                 Clothing
             </a>
             <div class="dropdown-menu border-0" aria-labelledby="clothing-link">
-                <a href="" class="dropdown-item">Baby</a>
-                <a href="" class="dropdown-item">Tops</a>
-                <a href="" class="dropdown-item">All Clothing</a>
+                <a href="{% url 'products' %}?category=baby" class="dropdown-item">Baby</a>
+                <a href="{% url 'products' %}?category=tops" class="dropdown-item">Tops</a>
+                <a href="{% url 'products' %}?category=baby,tops" class="dropdown-item">All Clothing</a>
             </div>
         </li>
 
@@ -41,10 +41,10 @@
                 Craft
             </a>
             <div class="dropdown-menu border-0" aria-labelledby="craft-link">
-                <a href="" class="dropdown-item">Tumblers</a>
-                <a href="" class="dropdown-item">Notebooks</a>
-                <a href="" class="dropdown-item">Toiletries</a>
-                <a href="{% url 'products' %}" class="dropdown-item">All Craft</a>
+                <a href="{% url 'products' %}?category=tumbler" class="dropdown-item">Tumblers</a>
+                <a href="{% url 'products' %}?category=note_books" class="dropdown-item">Notebooks</a>
+                <a href="{% url 'products' %}?category=toiletries" class="dropdown-item">Toiletries</a>
+                <a href="{% url 'products' %}?category=tumbler,note_books,toiletries" class="dropdown-item">All Craft</a>
             </div>
         </li>
 
@@ -53,10 +53,10 @@
                 Seasonal
             </a>
             <div class="dropdown-menu border-0" aria-labelledby="specials-link">
-                <a href="" class="dropdown-item">Christmas</a>
-                <a href="" class="dropdown-item">Halloween</a>
-                <a href="" class="dropdown-item">Mothers/Fathers Day</a>
-                <a href="" class="dropdown-item">All Seasonal</a>
+                <a href="{% url 'products' %}?category=christmas" class="dropdown-item">Christmas</a>
+                <a href="{% url 'products' %}?category=halloween" class="dropdown-item">Halloween</a>
+                <a href="{% url 'products' %}?category=mother_father" class="dropdown-item">Mothers/Fathers Day</a>
+                <a href="{% url 'products' %}?category=christmas,halloween,mother_father" class="dropdown-item">All Seasonal</a>
             </div>
         </li>
 
