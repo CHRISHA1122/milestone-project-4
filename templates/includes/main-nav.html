@@ -6,10 +6,10 @@
             <a class="logo-font font-weight-bold nav-link text-white mr-5" href="#" id="all-products-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 All Products
             </a>
-            <div class="dropdown-menu border-0" aria-labelledby="all-products-link">
-                <a href="" class="dropdown-item">By Price</a>
-                <a href="" class="dropdown-item ">By Rating</a>
-                <a href="" class="dropdown-item ">By Category</a>
+            <div class="dropdown-menu logo-font border-0" aria-labelledby="all-products-link">
+                <a href="{% url 'products' %}?sort=price&direction=asc" class="dropdown-item">By Price</a>
+                <a href="{% url 'products' %}?sort=rating&direction=desc" class="dropdown-item ">By Rating</a>
+                <a href="{% url 'products' %}?sort=category&direction=asc" class="dropdown-item ">By Category</a>
                 <a href="{% url 'products' %}" class="dropdown-item">All Products</a>
             </div>
         </li>
@@ -18,7 +18,7 @@
             <a class="logo-font font-weight-bold nav-link text-white mr-5" href="#" id="specials-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Specials
             </a>
-            <div class="dropdown-menu border-0" aria-labelledby="specials-link">
+            <div class="dropdown-menu logo-font border-0" aria-labelledby="specials-link">
                 <a href="{% url 'products' %}?category=new_arrivals" class="dropdown-item">New Arrivals</a>
                 <a href="{% url 'products' %}?category=deals" class="dropdown-item">Deals</a>
                 <a href="{% url 'products' %}?category=new_arrivals,deals" class="dropdown-item">All Specials</a>
@@ -29,7 +29,7 @@
             <a class="logo-font font-weight-bold nav-link text-white mr-5" href="#" id="clothing-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Clothing
             </a>
-            <div class="dropdown-menu border-0" aria-labelledby="clothing-link">
+            <div class="dropdown-menu logo-font border-0" aria-labelledby="clothing-link">
                 <a href="{% url 'products' %}?category=baby" class="dropdown-item">Baby</a>
                 <a href="{% url 'products' %}?category=tops" class="dropdown-item">Tops</a>
                 <a href="{% url 'products' %}?category=baby,tops" class="dropdown-item">All Clothing</a>
@@ -40,7 +40,7 @@
             <a class="logo-font font-weight-bold nav-link text-white mr-5" href="#" id="craft-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Craft
             </a>
-            <div class="dropdown-menu border-0" aria-labelledby="craft-link">
+            <div class="dropdown-menu logo-font border-0" aria-labelledby="craft-link">
                 <a href="{% url 'products' %}?category=tumbler" class="dropdown-item">Tumblers</a>
                 <a href="{% url 'products' %}?category=note_books" class="dropdown-item">Notebooks</a>
                 <a href="{% url 'products' %}?category=toiletries" class="dropdown-item">Toiletries</a>
@@ -52,7 +52,7 @@
             <a class="logo-font font-weight-bold nav-link text-white" href="#" id="seasonal-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Seasonal
             </a>
-            <div class="dropdown-menu border-0" aria-labelledby="specials-link">
+            <div class="dropdown-menu logo-font border-0" aria-labelledby="specials-link">
                 <a href="{% url 'products' %}?category=christmas" class="dropdown-item">Christmas</a>
                 <a href="{% url 'products' %}?category=halloween" class="dropdown-item">Halloween</a>
                 <a href="{% url 'products' %}?category=mother_father" class="dropdown-item">Mothers/Fathers Day</a>

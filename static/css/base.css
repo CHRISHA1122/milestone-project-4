@@ -84,12 +84,21 @@ body {
 	z-index: -1;
 }
 
-.color-box {
-    display: inline-block;
-    width: 20px;
-    height: 20px;
-    border: 1px solid #999;
-    margin-right: 5px;
+a.category-badge > span.badge:hover {
+    background: black !important;
+    color: #fff !important;
+}
+
+.btt-button {
+    height: 42px;
+    width: 42px;
+    position: fixed;
+    bottom: 80px;
+    right: 20px;
+}
+
+.btt-link {
+    cursor: pointer;
 }
 
 /* -------------------------------- Media Queries */
