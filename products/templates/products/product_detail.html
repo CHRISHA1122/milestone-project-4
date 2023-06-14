@@ -19,11 +19,13 @@
                     <div class="image-container">
                         {% if product.image %}
                         <a href="{{ product.image.url }}" target="_blank">
-                            <img class="card-img-top img-fluid" src="{{ product.image.url }}" alt="{{ product.name }}" style="width: 100%; height: 460px;">
+                            <img class="card-img-top img-fluid" src="{{ product.image.url }}" alt="{{ product.name }}"
+                                style="width: 100%; height: 460px;">
                         </a>
                         {% else %}
                         <a href="">
-                            <img class="card-img-top img-fluid" src="{{ MEDIA_URL }}noimage.png" alt="{{ product.name }}" style="width: 100%; height: 460px;">
+                            <img class="card-img-top img-fluid" src="{{ MEDIA_URL }}noimage.png"
+                                alt="{{ product.name }}" style="width: 100%; height: 460px;">
                         </a>
                         {% endif %}
                     </div>
@@ -43,40 +45,33 @@
                     <p class="mt-3">{{ product.description }}</p>
 
                     <!-- Customization fields -->
-                    {% if product.customizableproduct %}
-                    <div class="form-group">
-                        <label for="main-color">Main Colour:</label>
-                        <select class="form-control" id="main-color" name="main_color">
-                            <option value="" {% if not product.customizableproduct.main_color %}selected{% endif %}>Choose a colour</option>
-                            {% for color_value, color_label in product.customizableproduct.get_main_color_choices %}
-                            <option value="{{ color_value }}"
-                                {% if product.customizableproduct.main_color == color_value %}selected{% endif %}>
-                                <span class="color-box" style="background-color: {{ color_value }};"></span>
-                                {{ color_label }}
-                            </option>
-                            {% endfor %}
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="wording-color">Wording Colour:</label>
-                        <select class="form-control" id="wording-color" name="wording_color">
-                            <option value="" {% if not product.customizableproduct.wording_color %}selected{% endif %}>Choose a colour
-                            </option>
-                            {% for color_value, color_label in product.customizableproduct.get_wording_color_choices %}
-                            <option value="{{ color_value }}"
-                                {% if product.customizableproduct.wording_color == color_value %}selected{% endif %}>
-                                <span class="color-box" style="background-color: {{ color_value }};"></span>
-                                {{ color_label }}
-                            </option>
-                            {% endfor %}
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="writing">Choose Writing:</label>
-                        <input type="text" class="form-control" id="choose-writing" name="choose-writing"
-                            value="{{ product.writing }}">
-                    </div>
-                    {% endif %}
+                    <form method="POST" action="{% url 'customize_product' product.id %}">
+                        {% csrf_token %}
+                        {% if product.customizableproduct %}
+                        <div class="form-group">
+                            <label for="main-color">Main Colour:</label>
+                            <select class="form-control" id="main-color" name="main_color">
+                                {% for choice in product.customizableproduct.get_main_color_choices %}
+                                <option value="{{ choice.0 }}" style="background-color: {{ choice.0 }};">{{ choice.1 }}
+                                </option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="wording-color">Wording Colour:</label>
+                            <select class="form-control" id="wording-color" name="wording_color">
+                                {% for choice in product.customizableproduct.get_wording_color_choices %}
+                                <option value="{{ choice.0 }}" style="background-color: {{ choice.0 }};">{{ choice.1 }}
+                                </option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="writing">Choose Writing:</label>
+                            <input type="text" class="form-control" id="writing" name="writing">
+                        </div>
+                        {% endif %}
+                    </form>
                 </div>
             </div>
         </div>

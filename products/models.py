@@ -51,15 +51,15 @@ class CustomizableProduct(models.Model):
 
         if self.category and self.category.name == 'note_books':
             return [
-                ('red', 'Red'),
-                ('blue', 'Blue'),
+                ('#FF0000', 'Red'),
+                ('#0000FF', 'Blue'),
             ]
 
         elif self.category and self.category.name == 'toiletries':
             return [
-                ('black', 'Black'),
-                ('white', 'White'),
-                ('gray', 'Gray'),
+                ('#000000', 'Black'),
+                ('#FFFFFF', 'White'),
+                ('#272727', 'Gray'),
             ]
 
         else:
@@ -71,16 +71,16 @@ class CustomizableProduct(models.Model):
 
         if self.category and self.category.name == 'note_books':
             return [
-                ('black', 'Black'),
-                ('white', 'White',),
-                ('gray', 'Gray'),
+                ('#000000', 'Black'),
+                ('#FFFFFF', 'White',),
+                ('#272727', 'Gray'),
             ]
 
         elif self.category and self.category.name == 'toiletries':
             return [
-                ('black', 'Black'),
-                ('white', 'White'),
-                ('gray', 'Gray'),
+                ('#000000', 'Black'),
+                ('#FFFFFF', 'White'),
+                ('#272727', 'Gray'),
             ]
 
         else:
