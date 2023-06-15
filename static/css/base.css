@@ -131,6 +131,7 @@ a.category-badge > span.badge:hover {
 @media (max-width: 991px) {
     .header-container {
         padding-top: 116px;
+        z-index: -1;
     }
 
     body {
@@ -138,6 +139,7 @@ a.category-badge > span.badge:hover {
     }
 
     .navbar {
-        max-height: 11rem;
+        max-height: 170px;
+        background-color: white;
     }
 }
