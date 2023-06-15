@@ -66,12 +66,12 @@ body {
 /* -------------------------------- Product Pages */
 #details {
     width: 100%;
-    height: 500px;
+    height: auto;
 }
 
 #product-image {
     width: 100%;
-    height: 500px;
+    height: auto;
 }
 
 .overlay {
@@ -87,6 +87,19 @@ body {
 a.category-badge > span.badge:hover {
     background: black !important;
     color: #fff !important;
+}
+
+.btn-outline-black {
+    background: white;
+    color: black !important;
+    border: 1px solid black;
+}
+
+.btn-outline-black:hover,
+.btn-outline-black:active,
+.btn-outline-black:focus {
+    background: black;
+    color: white !important;
 }
 
 .btt-button {
