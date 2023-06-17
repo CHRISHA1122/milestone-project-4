@@ -16,7 +16,7 @@
     <div class="row">
         <div class="col">
             <hr>
-            <h2 class="logo-font mb-4 logo-font text-white">Shopping Bag</h2>
+            <h2 class="logo-font mb-4 logo-font text-white text-center">Shopping Bag</h2>
             <hr>
         </div>
     </div>
@@ -113,13 +113,15 @@
                 </a>
             </div>
             {% else %}
-            <p class="lead mb-5 logo-font text-white">Your bag is empty.</p>
-            <a href="{% url 'products' %}" class="btn btn-outline-black rounded-0 btn-lg">
-                <span class="icon">
-                    <i class="fas fa-chevron-left"></i>
-                </span>
-                <span class="logo-font">Keep Shopping</span>
-            </a>
+            <div class="text-center mt-5 mb-5">
+                <p class="lead mb-5 logo-font text-white">Your bag is empty.</p>
+                <a href="{% url 'products' %}" class="btn btn-outline-black rounded-0 btn-lg">
+                    <span class="icon">
+                        <i class="fas fa-chevron-left"></i>
+                    </span>
+                    <span class="logo-font">Keep Shopping</span>
+                </a>
+            </div>
             {% endif %}
         </div>
     </div>

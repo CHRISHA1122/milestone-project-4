@@ -13,7 +13,7 @@ body {
 
 /* -------------------------------- Base HTML */
 .navbar {
-    max-height: 3rem;
+    max-height: auto;
     background-color: #272727;
 }
 
@@ -61,6 +61,26 @@ body {
 
 .border-black {
     border: 1px solid black !important;
+}
+
+.footer {
+    position: relative;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}
+
+.text-wrap {
+    margin-left: 60px;
+}
+
+.social-icon {
+    max-width: 80px;
+    height: 60px;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    margin-top: 0px;
 }
 
 /* -------------------------------- Product Pages */
@@ -154,7 +174,10 @@ a.category-badge > span.badge:hover {
     }
 
     .navbar {
-        max-height: 170px;
         background-color: white;
+    }
+
+    .nav-item a {
+        color: black !important;
     }
 }
