@@ -17,7 +17,7 @@ body {
     background-color: #272727;
 }
 
-/* from Bulma */
+/* From Bulma */
 .icon {
     align-items: center;
     display: inline-flex;
@@ -62,6 +62,8 @@ body {
 .border-black {
     border: 1px solid black !important;
 }
+
+/* ------------------------------- Footer */
 
 .footer {
     position: relative;
@@ -134,6 +136,23 @@ a.category-badge > span.badge:hover {
 .update-link,
 .remove-item {
     cursor: pointer;
+}
+
+/* ------------------------------- Bootstrap Toasts */
+
+.message-container {
+    position: fixed;
+    top: 72px;
+    right: 15px;
+    z-index: 99999999999;
+}
+
+.custom-toast {
+    overflow: visible;
+}
+
+.toast-capper {
+    height: 2px;
 }
 
 /* -------------------------------- Media Queries */
