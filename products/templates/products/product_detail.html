@@ -39,7 +39,7 @@
         <div class="col-12 col-md-6 col-lg-4">
             <div id="details" class="card product-details-container mb-5 mt-md-5">
                 <div class="card-body">
-                    <p class="card-title mb-0">{{ product.name }}</p>
+                    <p class="card-title mb-0 font-weight-bold">{{ product.name }}</p>
                     <p class="lead mb-0 text-left font-weight-bold">£{{ product.price }}</p>
                     {% if product.category %}
                     <p class="small mt-1 mb-0">
@@ -59,7 +59,7 @@
                     <form method="POST" action="{% url 'customize_product' product.id %}">
                         {% csrf_token %}
                         {% if product.customizableproduct %}
-                        <div class="form-group">
+                        <div class="form-group details-form">
                             <label for="main-color">Main Colour:</label>
                             <select class="form-control" id="main-color" name="main_color">
                                 {% for choice in product.customizableproduct.get_main_color_choices %}
@@ -68,7 +68,7 @@
                                 {% endfor %}
                             </select>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group details-form">
                             <label for="wording-color">Wording Colour:</label>
                             <select class="form-control" id="wording-color" name="wording_color">
                                 {% for choice in product.customizableproduct.get_wording_color_choices %}
@@ -77,7 +77,7 @@
                                 {% endfor %}
                             </select>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group details-form">
                             <label for="writing">Choose Writing:</label>
                             <input type="text" class="form-control" id="writing" name="writing">
                         </div>
