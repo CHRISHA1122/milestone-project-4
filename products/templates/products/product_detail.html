@@ -59,7 +59,7 @@
                     <form method="POST" action="{% url 'customize_product' product.id %}">
                         {% csrf_token %}
                         {% if product.customizableproduct %}
-                        <div class="form-group details-form">
+                        <div class="form-group">
                             <label for="main-color">Main Colour:</label>
                             <select class="form-control" id="main-color" name="main_color">
                                 {% for choice in product.customizableproduct.get_main_color_choices %}
