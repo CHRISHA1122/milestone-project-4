@@ -17,7 +17,7 @@ var style = {
         fontSmoothing: 'antialiased',
         fontSize: '16px',
         '::placeholder': {
-            color: '#000'
+            color: '#495057'
         }
     },
     invalid: {
