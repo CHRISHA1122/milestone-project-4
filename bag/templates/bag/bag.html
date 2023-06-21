@@ -11,7 +11,8 @@
 {% endblock %}
 
 {% block content %}
-<div class="overlay"></div>
+<div class="wrapper">
+    <div class="overlay"></div>
 <div class="container mb-2">
     <div class="row">
         <div class="col text-center">
@@ -114,17 +115,19 @@
             {% else %}
             <div class="text-center mt-5 mb-5">
                 <p class="lead mb-5 logo-font text-white">Your bag is empty.</p>
-                <a href="{% url 'products' %}" class="btn btn-outline-black rounded-0 btn-lg">
+                <a href="{% url 'products' %}" class="btn btn-outline-black logo-font rounded-0 btn-lg">
                     <span class="icon">
                         <i class="fas fa-chevron-left"></i>
                     </span>
-                    <span class="logo-font">Keep Shopping</span>
+                    <span>Keep Shopping</span>
                 </a>
             </div>
             {% endif %}
         </div>
     </div>
 </div>
+</div>
+
 {% endblock %}
 
 {% block postloadjs %}

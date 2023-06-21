@@ -37,6 +37,10 @@
   border: 1px solid #CED4DA;
 }
 
+.check-card {
+  margin-bottom: 60px;
+}
+
 #loading-overlay {
 	display: none;
 	position: fixed;

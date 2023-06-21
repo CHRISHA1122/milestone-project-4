@@ -17,19 +17,19 @@
     <div class="overlay"></div>
     <div class="container">
         <div class="row">
-            <div class="col">
-                <h2 class="logo-font mb-4">Thank You</h2>
+            <div class="col text-center mt-3">
+                <h2 class="logo-font text-white">Thank You</h2>
                 <hr>
-                <p class="text-black">Success. A confirmation email will be sent to <strong>{{ order.email }}</strong>.</p>
+                <p class="text-white">Success. A confirmation email will be sent to <strong>{{ order.email }}</strong>.</p>
             </div>
         </div>
 
-        <div class="row">
-            <div class="col-12 col-lg-7">
+        <div class="row  justify-content-center">
+            <div class="card col-12 col-lg-7">
                 <div class="order-confirmation-wrapper p-2 border">
                     <div class="row">
                         <div class="col">
-                            <small class="text-muted">Order Info:</small>
+                            <small class="text-muted logo-font">Order Info:</small>
                         </div>
                     </div>
 
@@ -53,7 +53,7 @@
 
                     <div class="row">
                         <div class="col">
-                            <small class="text-muted">Order Details:</small>
+                            <small class="text-muted logo-font">Order Details:</small>
                         </div>
                     </div>
 
@@ -65,14 +65,14 @@
                             </p>
                         </div>
                         <div class="col-12 col-md-8 text-md-right">
-                            <p class="small mb-0">{{ item.quantity }} @ ${{ item.product.price }} each</p>
+                            <p class="small mb-0">{{ item.quantity }} @ £{{ item.product.price }} each</p>
                         </div>
                     </div>
                     {% endfor %}
 
                     <div class="row">
                         <div class="col">
-                            <small class="text-muted">Delivering To:</small>
+                            <small class="text-muted logo-font">Delivering To:</small>
                         </div>
                     </div>
 
@@ -156,7 +156,7 @@
 
                     <div class="row">
                         <div class="col">
-                            <small class="text-muted">Billing Info:</small>
+                            <small class="text-muted logo-font">Billing Info:</small>
                         </div>
                     </div>
 
@@ -189,15 +189,13 @@
                 </div>
             </div>
         </div>
-        <div class="row">
-			<div class="col-12 col-lg-7 text-right">
-				<a href="{% url 'products' %}?category=new_arrivals,deals" class="btn btn-black rounded-0 my-2">
-					<span class="icon mr-2">
-						<i class="fas fa-gifts"></i>
-					</span>
-					<span class="logo-font">Now check out the latest deals!</span>
-				</a>
-			</div>
-		</div>
-    </div>
+        <div class="text-center mt-3">
+            <a href="{% url 'products' %}?category=new_arrivals,deals" class="btn btn-outline-black logo-font rounded-0 btn-lg my-2">
+                <span class="icon mr-2">
+                    <i class="fas fa-gifts"></i>
+                </span>
+                <span>Check our latest deals here!</span>
+            </a>
+        </div>
+	</div>
 {% endblock %}

@@ -6,15 +6,27 @@ body {
     background: url('/media/bmdesigns-logo-2.jpeg') no-repeat center;
     background-size: cover;
     background-color: #272727;
+    background-position: center -350px;
+    margin-top: 1rem;
     height: calc(100vh - 164px);
     color: black;
     font-family: 'Lato';
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 60vh;
 }
 
 /* -------------------------------- Base HTML */
 .navbar {
     max-height: auto;
     background-color: #272727;
+}
+
+.nav-item a {
+    font-size: 1.2rem;
 }
 
 /* From Bulma */
@@ -40,7 +52,8 @@ body {
     min-width: 260px;
 }
 
-.btn-black {
+.btn-black,
+.category-badge-custom {
     background: white;
     color: black;
 }
@@ -243,7 +256,8 @@ a.category-badge > span.badge:hover {
     }
 
     body {
-        height: calc(100vh - 116px);
+        background-size: contain;
+        background-position: center 100px;
     }
 
     .navbar {

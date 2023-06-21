@@ -18,7 +18,7 @@
             {% for c in current_categories %}
             <a class="category-badge text-decoration-none" href="{% url 'products' %}?category={{ c.name }}">
                 <span
-                    class="p-2 mt-2 badge badge-black logo-font text-white rounded-0 border border-dark">{{ c.friendly_name }}</span>
+                    class="p-2 mt-2 badge badge-white logo-font text-black rounded-0 border border-dark category-badge-custom">{{ c.friendly_name }}</span>
             </a>
             {% endfor %}
             <hr class="w-50 mb-1">
