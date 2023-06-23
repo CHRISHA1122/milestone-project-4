@@ -7,7 +7,10 @@ body {
     background-size: cover;
     background-color: #272727;
     background-position: center -350px;
-    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+    margin-top: 0;
     height: calc(100vh - 164px);
     color: black;
     font-family: 'Lato';
@@ -17,6 +20,11 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 60vh;
+}
+
+/* -------------------------------- Index HTML */
+.home-link {
+    margin-top: 355px;
 }
 
 /* -------------------------------- Base HTML */
@@ -79,10 +87,10 @@ body {
 /* ------------------------------- Footer */
 
 .footer {
-    position: relative;
-    left: 0;
-    bottom: 0;
-    width: 100%;
+    margin-top: auto;
+    padding-top: 1rem;
+    color: white;
+    text-align: center;
 }
 
 .text-wrap {
@@ -319,8 +327,8 @@ input[name='q']::placeholder {
 	color: #17a2b8; /* text-info */
 }
 
-/* fixed top navbar only on medium and up */
 @media (min-width: 992px) {
+/* fixed top navbar only on medium and up */
     .fixed-top-desktop-only {
         position: fixed;
         top: 0;
@@ -334,11 +342,9 @@ input[name='q']::placeholder {
     }
 }
 
-/* pad the top a bit when navbar is collapsed on mobile */
 @media (max-width: 991px) {
     .header-container {
-        padding-top: 116px;
-        z-index: -1;
+        padding-top: 164px;
     }
 
     body {
