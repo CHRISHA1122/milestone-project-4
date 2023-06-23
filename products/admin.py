@@ -25,17 +25,13 @@ class ProductAdmin(admin.ModelAdmin):
     inlines = (CustomizableProductInline,)
 
     def save_model(self, request, obj, form, change):
-        if obj.customizable:
-            try:
-                obj.customizableproduct
-            except CustomizableProduct.DoesNotExist:
-                CustomizableProduct.objects.create(product=obj)
-        else:
-            try:
-                obj.customizableproduct.delete()
-            except CustomizableProduct.DoesNotExist:
-                pass
         super().save_model(request, obj, form, change)
+        if obj.customizable:
+            if not hasattr(obj, 'customizableproduct'):
+                CustomizableProduct.objects.create(product=obj)
+
+        else:
+            obj.customizableproduct.delete()
 
 
 class CategoryAdmin(admin.ModelAdmin):
