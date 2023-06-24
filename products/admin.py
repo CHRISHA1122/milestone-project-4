@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Category, CustomizableProduct, Product
+from .models import Category, CustomizableProduct, Product, Color
 
 # Register models
 
@@ -9,6 +9,8 @@ class CustomizableProductInline(admin.StackedInline):
     can_delete = False
     verbose_name_plural = 'Customizable Product'
     fk_name = 'product'
+    fields = ['main_color', 'wording_color']
+
 
 
 class ProductAdmin(admin.ModelAdmin):
@@ -33,6 +35,15 @@ class ProductAdmin(admin.ModelAdmin):
         else:
             obj.customizableproduct.delete()
 
+    fieldsets = (
+        (None, {
+            'fields': ('category', 'sku', 'name', 'description', 'price', 'image')
+        }),
+        ('Customization', {
+            'fields': ('customizable',),
+        }),
+    )
+
 
 class CategoryAdmin(admin.ModelAdmin):
     list_display = (
@@ -43,3 +54,4 @@ class CategoryAdmin(admin.ModelAdmin):
 
 admin.site.register(Product, ProductAdmin)
 admin.site.register(Category, CategoryAdmin)
+admin.site.register(Color)

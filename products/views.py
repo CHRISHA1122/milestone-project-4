@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.db.models.functions import Lower
 
-from .models import Product, Category, CustomizableProduct
+from .models import Product, Category, CustomizableProduct, Color
 from .forms import CustomizableProductForm
 from .forms import ProductForm
 
