@@ -67,13 +67,18 @@ def product_detail(request, product_id):
     """ A view to show individual product details """
 
     product = get_object_or_404(Product, pk=product_id)
-    try:
-        customizable_product = product.customizableproduct
-    except CustomizableProduct.DoesNotExist:
-        customizable_product = None
+    colors = product.colors.all()
+    customizable_product = None
+
+    if product.customizable:
+        try:
+            customizable_product = product.customizableproduct
+        except CustomizableProduct.DoesNotExist:
+            pass
 
     context = {
         'product': product,
+        'colors': colors,
         'customizable_product': customizable_product,
     }
 
@@ -83,6 +88,7 @@ def product_detail(request, product_id):
 @login_required
 def add_product(request):
     """ Add a product to the store """
+
     if not request.user.is_superuser:
         messages.error(request, 'Sorry, you are not site admin.')
         return redirect(reverse('home'))
@@ -91,6 +97,8 @@ def add_product(request):
         form = ProductForm(request.POST, request.FILES)
         if form.is_valid():
             product = form.save()
+            if product.customizable:
+                CustomizableProduct.objects.create(product=product)
             messages.success(request, 'Successfully added product!')
             return redirect(reverse('product_detail', args=[product.id]))
         else:

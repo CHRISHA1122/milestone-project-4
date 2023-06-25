@@ -12,7 +12,6 @@ class CustomizableProductInline(admin.StackedInline):
     fields = ['main_color', 'wording_color']
 
 
-
 class ProductAdmin(admin.ModelAdmin):
     list_display = (
         'name',
@@ -33,7 +32,8 @@ class ProductAdmin(admin.ModelAdmin):
                 CustomizableProduct.objects.create(product=obj)
 
         else:
-            obj.customizableproduct.delete()
+            if hasattr(obj, 'customizableproduct'):
+                obj.customizableproduct.delete()
 
     fieldsets = (
         (None, {

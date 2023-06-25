@@ -1,13 +1,19 @@
 from django import forms
 from .widgets import CustomClearableFileInput
-from .models import Product, Category, CustomizableProduct
+from .models import Product, Category, CustomizableProduct, Color
 
 
 class ProductForm(forms.ModelForm):
 
+    main_color = forms.ModelChoiceField(queryset=Color.objects.all(), widget=forms.Select)
+    wording_color = forms.ModelChoiceField(queryset=Color.objects.all(), widget=forms.Select)
+
     class Meta:
         model = Product
-        fields = '__all__'
+        exclude = ['colors']
+        widgets = {
+            'image': CustomClearableFileInput,
+        }
 
     image = forms.ImageField(label='Image', required=False, widget=CustomClearableFileInput)
 
@@ -25,4 +31,4 @@ class CustomizableProductForm(forms.ModelForm):
 
     class Meta:
         model = CustomizableProduct
-        fields = ['main_color', 'wording_color', 'writing']
+        fields = ['writing']

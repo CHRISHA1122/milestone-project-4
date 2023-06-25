@@ -26,7 +26,14 @@
                 {% csrf_token %}
                 {% for field in form %}
                     {% if field.name != 'image' %}
+                    {% if field.name == 'main_color' or field.name == 'wording_color' %}
+                        <div class="form-group">
+                            <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                            {{ field }}
+                        </div>
+                    {% else %}
                         {{ field | as_crispy_field }}
+                    {% endif %}
                     {% else %}
                         {{ field }}
                     {% endif %}

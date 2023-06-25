@@ -20,6 +20,7 @@ class Category(models.Model):
         return self.friendly_name
 
 
+# Color Model
 class Color(models.Model):
     name = models.CharField(max_length=50)
     code = models.CharField(max_length=50)
