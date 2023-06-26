@@ -76,10 +76,18 @@ def product_detail(request, product_id):
         except CustomizableProduct.DoesNotExist:
             pass
 
+    if request.method == 'POST':
+        form = CustomizableProductForm(request.POST, instance=customizable_product)
+        if form.is_valid():
+            form.save()
+    else:
+        form = CustomizableProductForm(instance=customizable_product)
+
     context = {
         'product': product,
         'colors': colors,
         'customizable_product': customizable_product,
+        'form': form,
     }
 
     return render(request, 'products/product_detail.html', context)
@@ -96,7 +104,11 @@ def add_product(request):
     if request.method == 'POST':
         form = ProductForm(request.POST, request.FILES)
         if form.is_valid():
-            product = form.save()
+            product = form.save(commit=False)
+            if not product.customizable:
+                product.main_color = None
+                product.wording_color = None
+            product.save()
             if product.customizable:
                 CustomizableProduct.objects.create(product=product)
             messages.success(request, 'Successfully added product!')

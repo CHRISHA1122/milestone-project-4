@@ -56,7 +56,7 @@
                     <hr>
                     {% if request.user.is_superuser %}
                     <small class="logo-font ml-3">
-                        <a href="{% url 'edit_product' product.id %}">Edit</a> | 
+                        <a href="{% url 'edit_product' product.id %}">Edit</a> |
                         <a class="text-danger" href="{% url 'delete_product' product.id %}">Delete</a>
                     </small>
                     {% endif %}
@@ -69,17 +69,23 @@
                         <div class="form-group">
                             <label for="main-color">Main Colour:</label>
                             <select class="form-control" id="main-color" name="main_color">
-                                {% for color in product.colors.all %}
-                                    <option value="{{ color.id }}" style="background-color: {{ color.code }};">{{ color.name }}</option>
+                                {% for color in product.customizableproduct.main_color.options.all %}
+                                <option value="{{ color.id }}">
+                                    <span class="color-option" style="background-color: {{ color.code }}"></span>
+                                    {{ color.name }}
+                                </option>
                                 {% endfor %}
                             </select>
                         </div>
                         <div class="form-group details-form">
                             <label for="wording-color">Wording Colour:</label>
                             <select class="form-control" id="wording-color" name="wording_color">
-                                {% for color in product.colors.all %}
-                                    <option value="{{ color.id }}" style="background-color: {{ color.code }};">{{ color.name }}</option>
-                                {% endfor %}
+                                {% for color in product.customizableproduct.wording_color.options.all %}
+                                <option value="{{ color.id }}">
+                                    <span class="color-option" style="background-color: {{ color.code }}"></span>
+                                    {{ color.name }}
+                                </option>
+                                    {% endfor %}
                             </select>
                         </div>
                         <div class="form-group details-form">
@@ -156,5 +162,20 @@
 
 {% block postloadjs %}
 {{ block.super }}
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.dropdown-trigger').click(function () {
+            $(this).next('.dropdown-content').toggle();
+        });
+
+        $('.dropdown-item').click(function () {
+            var selectedValue = $(this).text();
+
+            $(this).parent('.dropdown-content').prev('.dropdown-trigger').text(selectedValue);
+
+            $(this).parent('.dropdown-content').hide();
+        });
+    });
+</script>
 {% include 'products/includes/quantity_input_script.html' %}
 {% endblock %}

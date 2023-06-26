@@ -5,8 +5,8 @@ from .models import Product, Category, CustomizableProduct, Color
 
 class ProductForm(forms.ModelForm):
 
-    main_color = forms.ModelChoiceField(queryset=Color.objects.all(), widget=forms.Select)
-    wording_color = forms.ModelChoiceField(queryset=Color.objects.all(), widget=forms.Select)
+    main_color = forms.ModelChoiceField(queryset=Color.objects.all(), widget=forms.Select, required=False)
+    wording_color = forms.ModelChoiceField(queryset=Color.objects.all(), widget=forms.Select, required=False)
 
     class Meta:
         model = Product

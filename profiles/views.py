@@ -24,12 +24,12 @@ def profile(request):
             messages.error(request, 'Update failed. Please ensure the form is valid.')
     else:
         form = UserProfileForm(instance=profile)
-    orders = profile.orders.all()
+        orders = profile.orders.all()
 
     template = 'profiles/profile.html'
     context = {
         'form': form,
-        'profile': profile,
+        'orders': orders,
         'on_profile_page': True
     }
 
@@ -37,6 +37,7 @@ def profile(request):
 
 
 def order_history(request, order_number):
+
     order = get_object_or_404(Order, order_number=order_number)
 
     messages.info(request, (
