@@ -29,8 +29,6 @@ DEBUG = 'DEVELOPMENT' in os.environ
 
 ALLOWED_HOSTS = ['milestone-project-4-bmdesigns-bfbe9959c9ae.herokuapp.com', 'localhost', '8000-chrisha1122-milestonepr-6c4owsgxqda.ws-eu100.gitpod.io']
 
-ACCOUNT_EMAIL_VERIFICATION = 'none'
-
 # Application definition
 
 INSTALLED_APPS = [
