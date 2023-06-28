@@ -360,11 +360,36 @@ input[name='q']::placeholder {
         background-position: center 100px;
     }
 
+    .display-4.logo-font.text-black {
+        font-size: 2rem;
+    }
+
     .navbar {
         background-color: white;
     }
 
     .nav-item a {
         color: black !important;
+    }
+
+    .nav-link {
+        padding: 0.15rem;
+    }
+
+    .nav-link i.fa-lg {
+        font-size: 1rem;
+    }
+
+    .navbar-toggler {
+        padding: .6rem .6rem;
+        font-size: 1rem;
+    }
+
+    .btn.btn-outline-black.rounded-0,
+    .btn.btn-black.rounded-0 {
+        padding: .375rem .375rem;
+    }
+    .increment-qty, .decrement-qty {
+        padding: .25rem .5rem !important;
     }
 }

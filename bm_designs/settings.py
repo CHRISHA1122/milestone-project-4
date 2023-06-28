@@ -25,9 +25,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('SECRET_KEY', '')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get('DEVELOPMENT') == 'True'
+DEBUG = 'DEVELOPMENT' in os.environ
 
-ALLOWED_HOSTS = ['milestone-project-4-bmdesigns-bfbe9959c9ae.herokuapp.com', 'localhost', '8000-chrisha1122-milestonepr-6c4owsgxqda.ws-eu100.gitpod.io']
+ALLOWED_HOSTS = ['milestone-project-4-bmdesigns-bfbe9959c9ae.herokuapp.com', 'localhost', '8000-chrisha1122-milestonepr-6c4owsgxqda.ws-eu101.gitpod.io']
 
 # Application definition
 
@@ -206,7 +206,7 @@ STRIPE_SECRET_KEY = os.getenv('STRIPE_SECRET_KEY', '')
 STRIPE_WH_SECRET = os.getenv('STRIPE_WH_SECRET', '')
 
 # Emails
-if DEBUG:
+if 'DEVELOPMENT' in os.environ:
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
     DEFAULT_FROM_EMAIL = 'beckymcgarva86@gmail.com'
 else:
