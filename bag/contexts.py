@@ -1,7 +1,7 @@
 from decimal import Decimal
 from django.conf import settings
 from django.shortcuts import get_object_or_404
-from products.models import Product
+from products.models import Product, Color
 
 
 def bag_contents(request):
@@ -13,27 +13,35 @@ def bag_contents(request):
     bag = request.session.get('bag', {})
 
     for item_id, item_data in bag.items():
-        if isinstance(item_data, int):
-            product = get_object_or_404(Product, pk=item_id)
-            total += item_data * product.price
-            product_count += item_data
-            bag_items.append({
-                'item_id': item_id,
-                'quantity': item_data,
-                'product': product,
-            })
+        product = get_object_or_404(Product, pk=item_id)
 
+        if isinstance(item_data, int):
+            quantity = item_data
+            main_color = None
+            wording_color = None
+            writing = None
         else:
-            product = get_object_or_404(Product, pk=item_id)
-            for size, quantity in item_data['items_by_size'].items():
-                total += quantity * product.price
-                product_count += quantity
-                bag_items.append({
-                    'item_id': item_id,
-                    'quantity': quantity,
-                    'product': product,
-                    'size': size,
-                })
+            quantity = item_data['quantity']
+            main_color = item_data.get('main_color')
+            wording_color = item_data.get('wording_color')
+            writing = item_data.get('writing')
+
+        total += quantity * product.price
+        product_count += quantity
+
+        bag_items.append({
+            'item_id': item_id,
+            'quantity': quantity,
+            'product': product,
+            'main_color': main_color,
+            'wording_color': wording_color,
+            'writing': writing,
+        })
+
+        print(f"Item ID: {item_id}")
+        print(f"Main Color: {main_color}")
+        print(f"Wording Color: {wording_color}")
+        print(f"Writing: {writing}")
 
     delivery = total * Decimal(settings.STANDARD_DELIVERY_PERCENTAGE / 100)
 
