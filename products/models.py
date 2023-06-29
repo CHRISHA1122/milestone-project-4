@@ -42,17 +42,6 @@ class Product(models.Model):
         max_digits=6, decimal_places=2, null=True, blank=True)
     image = models.ImageField(null=True, blank=True)
     customizable = models.BooleanField(default=False)
-    colors = models.ManyToManyField(Color)
-
-    def __str__(self):
-        return self.name
-
-
-# Customization Model
-class CustomizableProduct(models.Model):
-    product = models.OneToOneField(Product, on_delete=models.CASCADE)
-    category = models.ForeignKey(
-        Category, null=True, blank=True, on_delete=models.SET_NULL)
     main_color = models.ForeignKey(
         Color, related_name='main_color_products', null=True, blank=True, on_delete=models.SET_NULL)
     wording_color = models.ForeignKey(
@@ -60,4 +49,4 @@ class CustomizableProduct(models.Model):
     writing = models.CharField(max_length=100, null=True, blank=True)
 
     def __str__(self):
-        return f"Customizable {self.product.name}"
+        return self.name

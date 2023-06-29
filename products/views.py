@@ -4,8 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.db.models.functions import Lower
 
-from .models import Product, Category, CustomizableProduct, Color
-from .forms import CustomizableProductForm
+from .models import Product, Category, Color
 from .forms import ProductForm
 
 # Create views
@@ -67,26 +66,18 @@ def product_detail(request, product_id):
     """ A view to show individual product details """
 
     product = get_object_or_404(Product, pk=product_id)
-    colors = product.colors.all()
-    customizable_product = None
-
-    if product.customizable:
-        try:
-            customizable_product = product.customizableproduct
-        except CustomizableProduct.DoesNotExist:
-            pass
 
     if request.method == 'POST':
-        form = CustomizableProductForm(request.POST, instance=customizable_product)
+        form = ProductForm(request.POST, instance=product)
         if form.is_valid():
             form.save()
+            messages.success(request, 'Product updated successfully!')
+            return redirect(reverse('product_detail', args=[product.id]))
     else:
-        form = CustomizableProductForm(instance=customizable_product)
+        form = ProductForm(instance=product)
 
     context = {
         'product': product,
-        'colors': colors,
-        'customizable_product': customizable_product,
         'form': form,
     }
 
@@ -97,6 +88,8 @@ def product_detail(request, product_id):
 def add_product(request):
     """ Add a product to the store """
 
+    colors = Color.objects.all()
+
     if not request.user.is_superuser:
         messages.error(request, 'Sorry, you are not site admin.')
         return redirect(reverse('home'))
@@ -104,15 +97,9 @@ def add_product(request):
     if request.method == 'POST':
         form = ProductForm(request.POST, request.FILES)
         if form.is_valid():
-            product = form.save(commit=False)
-            if not product.customizable:
-                product.main_color = None
-                product.wording_color = None
-            product.save()
-            if product.customizable:
-                CustomizableProduct.objects.create(product=product)
+            form.save()
             messages.success(request, 'Successfully added product!')
-            return redirect(reverse('product_detail', args=[product.id]))
+            return redirect(reverse('products'))
         else:
             messages.error(request, 'Failed to add product. Please ensure the form is valid.')
     else:
@@ -166,29 +153,3 @@ def delete_product(request, product_id):
     product.delete()
     messages.success(request, 'Product deleted!')
     return redirect(reverse('products'))
-
-
-def customize_product(request, product_id):
-    """Customize  a product """
-    product = get_object_or_404(Product, pk=product_id)
-    try:
-        customizable_product = product.customizableproduct
-    except CustomizableProduct.DoesNotExist:
-        customizable_product = None
-
-    if request.method == 'POST':
-        form = CustomizableProductForm(
-            request.POST, instance=customizable_product)
-        if form.is_valid():
-            form.save()
-
-    else:
-        form = CustomizableProductForm(instance=customizable_product)
-
-    context = {
-        'product': product,
-        'customizable_product': customizable_product,
-        'form': form,
-    }
-
-    return render(request, 'products/product_detail.html', context)

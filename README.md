@@ -63,7 +63,7 @@ If you would like to test the payment functionality please feel free to do so by
 * To provide the site owner with a place to showcase work and expand there digital presence.
 * To add products.
 * To edit/update products.
-* Deete a product.
+* Delete a product.
 
 ## User Experience - UX
 
@@ -133,7 +133,7 @@ If you would like to test the payment functionality please feel free to do so by
 
 #### Styling
 
-* I have used Materialize throughout the site primarily to assist with design and responsiveness and added my own custom styling.
+* I have used Bootstrap throughout the site primarily to assist with design and responsiveness and added my own custom styling.
 
 #### Images
 
@@ -205,7 +205,162 @@ The website is split into 6 apps each with there own html, models, views urls an
 
 Below model displays all fields stored in the database collection.
 
-There are
+There are 8 individual models in 3 apps
+- Category - stores all categories.
+- Color - stores all colour options.
+- Product - stores product data.
+- CustomizableProduct - stores all customizable product details.
 - Order - stores users details.
 - OrderLineItem - stores product order details.
+- UserProfile - stores profile data.
+- UserProfile - stores profile data.
+
+![Physical Database Model]()
+
+* Built with Django using Postgresql and AWS for the database.
+The application structure is as follows:
+* bm_designs - contains all main set up for the website.
+* home - contains all index/home content for the website.
+* products- contains all product content for the website.
+* profiles - contains all profile content for the website.
+* bag - contains all bag content for the website.
+* checkout - contains all checkout content for the website.
+* templates - contains all base.html and allauth files for the website.
+* static - contains all css, js and images for the website.
+* media - contains all images for the website.
+* Application is created and setup by running python3 manage.py runserver.
+
+Additional gadgets used in back-end:
+
+* django-allauth
+* django-countries
+* django-crispy-forms
+* django-storages
+* gunicorn
+* stripe
+* Pillow
+
+## Technologies
+
+### Languages
+
+This project was built using [HTML5](https://en.wikipedia.org/wiki/HTML5),[CSS3](https://en.wikipedia.org/wiki/CSS) and [JS](https://www.javascript.com/) using a link from [Python](https://www.python.org/).
+
+### Frameworks
+
+Here is a list of the following technologies used in this project:
+
+- [HTML5](https://en.wikipedia.org/wiki/HTML5)
+HTML 5 was used to create the structure of the website.
+- [CSS3](https://en.wikipedia.org/wiki/CSS)
+CSS 3 was used to style the website.
+- [JS](https://www.javascript.com/)
+JS was used to give interactivity.
+- [Python](https://www.python.org/)
+Python was used for its database mechanics.
+- [SQLAlchemy](https://www.sqlalchemy.org/)
+ SQLAlchemy was used for its database mechanics.
+- [AWS](https://aws.amazon.com/)
+ AWS was used for its database mechanics.
+- [GitHub](https://github.com/)
+GitHub was used to store the projects code.
+- [Gitpod](https://gitpod.io/)
+Gitpod terminal was used to commit my code using Git and push it to Github.
+- [Heroku](https://heroku.com/)
+Heroku was used to deploy the project.
+- [Bootstrap](https://getbootstrap.com/)
+Bootstrap was used for its easy design and responsiveness.
+
+## Testing
+
+### Browsers
+
+
+### Mobile
+
+### HTML Validator
+
+### CSS Validator
+
+### JS Validator
+
+### Python Validator
+
+### Manual Testing
+
+### Bugs
+
+### Future Updates
+
+## Deployment
+
+### Github
+
+To clone this project into Github you will need:
+
+1. A Github account.
+2. Install the Gitpod extension.
+3. Log into Gitpod with your Github account.
+4. On the GitHub website find and click on the [Github repository](https://github.com/CHRISHA1122/milestone-project-3) of intrest.
+5. Locate the green button named Gitpod in the top right corner of the repository and click on it,
+6. This will trigger a new Gitpod workspace to be created from the code in Github where you can work locally.
+
+### Heroku
+
+1. In app.py file, ensure that debug is not enabled, i.e. not set to True.
+2. Create a plan file with no extensions called 'Procfile' in the root directory of your project (if it doesn't already exist), within it add the line 'web: python app.py' (essentially same thing we do when we run our program locally).
+3. Create a requirements.txt file by running the command the following command in your terminal:
+- `pip freeze --local > requirements.txt`
+4. Procfile and requirements.txt files should both be committed to your Git repository.
+5. Create an account on [Heroku](https://signup.heroku.com/login?redirect-url=https%3A%2F%2Fid.heroku.com%2Foauth%2Fauthorize%3Fclient_id%3D8ba4d6bc-6d8c-4de8-8d31-9e540595c199%26redirect_uri%3Dhttps%253A%252F%252Fdevcenter.heroku.com%252Fauth%252Fheroku%252Fcallback%253Fback_to%253D%252F%26response_type%3Dcode%26scope%3Didentity%26state%3D5627683e234758322a2e4a8ae45f254b4883a8266b26975c).
+6. Create a new application and name it same as your project (if name is available, if not choose one).
+7. In the application dashboard, navigate to the 'Deploy' section.
+8. Link your GitHub account in the Deployment method section, then in the 'App connected to GitHub' select your project repository. Enable automatic deployment if desired, otherwise deployment will need to be manually done.
+9. Next, configure your 'Config Vars'. Those should contain sets of key-value pairs of the keys you have stored in your local env.py, such as:
+  - IP
+  - PORT
+  - SECRET_KEY
+  - MONGO_URI
+  - AWS_ACCESS_KEY_ID
+  - AWS_SECRET_ACCESS_KEY
+10. Go to the project dashboard and in 'Manual Deploy' section select the correct branch, then click 'Deploy Branch' button.
+11. This will trigger the site's deployment. Once deployment has completed, click on the "Open App" button to open the deployed application.
+
+If the above steps have been followed correctly you will be greeted by your website's landing page.
+
+### ElephantSQL
+
+1. Navigate to ElephantSQL.com and click “Get a managed database today”.
+2. Select “Try now for FREE” in the TINY TURTLE database plan.
+3. Select “Log in with GitHub” and authorize ElephantSQL with your selected GitHub account.
+4.  Create new team:
+ - Add a team name (your own name is fine)
+ - Read and agree to the Terms of Service
+ - Select Yes for GDPR
+ - Provide your email address
+ - Click “Create Team”
+ -You should get a message saying Your account is successfully created!.
+5. Click “Create New Instance”.
+6. Set up your plan:
+ - Give your plan a Name (this is commonly the name of the project).
+ - Select the Tiny Turtle (Free) plan.
+ - You can leave the Tags field blank.
+7. Select “Select Region”.
+8. Select a data center near you.
+9. Then click “Review”.
+10. Check your details are correct and then click “Create instance”.
+11. Return to the ElephantSQL dashboard and click on the database instance name for this project.
+12. In the URL section, clicking the copy icon will copy the database URL to your clipboard you will need it for the heroku set up.
+
+## Credits
+
+### Code
+
+### Images
+
+## Acknowledgements
+
+* I would like to thank the [Code Institute](https://codeinstitute.net) for the learning material and all the other support on offer.
+* I would like to thank my mentor for all the help and guidence through the project.
+
 

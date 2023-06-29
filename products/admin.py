@@ -1,15 +1,7 @@
 from django.contrib import admin
-from .models import Category, CustomizableProduct, Product, Color
+from .models import Category, Product, Color
 
 # Register models
-
-
-class CustomizableProductInline(admin.StackedInline):
-    model = CustomizableProduct
-    can_delete = False
-    verbose_name_plural = 'Customizable Product'
-    fk_name = 'product'
-    fields = ['main_color', 'wording_color']
 
 
 class ProductAdmin(admin.ModelAdmin):
@@ -23,24 +15,14 @@ class ProductAdmin(admin.ModelAdmin):
     )
 
     list_editable = ('customizable',)
-    inlines = (CustomizableProductInline,)
-
-    def save_model(self, request, obj, form, change):
-        super().save_model(request, obj, form, change)
-        if obj.customizable:
-            if not hasattr(obj, 'customizableproduct'):
-                CustomizableProduct.objects.create(product=obj)
-
-        else:
-            if hasattr(obj, 'customizableproduct'):
-                obj.customizableproduct.delete()
 
     fieldsets = (
         (None, {
             'fields': ('category', 'sku', 'name', 'description', 'price', 'image')
         }),
         ('Customization', {
-            'fields': ('customizable',),
+            'fields': ('customizable', 'main_color', 'wording_color', 'writing'),
+            'classes': ('collapse',)
         }),
     )
 
