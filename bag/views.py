@@ -25,8 +25,6 @@ def add_to_bag(request, item_id):
     writing = None
     bag = request.session.get('bag', {})
 
-    print("Bag Items:", bag)
-
     if 'product_size' in request.POST:
         size = request.POST['product_size']
 
@@ -64,6 +62,7 @@ def add_to_bag(request, item_id):
             bag[item_id]['writing'] = writing
 
     request.session['bag'] = bag
+    messages.success(request, f'Added {product.name} to your bag')
     return redirect(redirect_url)
 
 

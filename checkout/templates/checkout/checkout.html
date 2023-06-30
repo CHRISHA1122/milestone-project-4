@@ -51,6 +51,17 @@
                     <p class="my-0 small">Size:
                         {% if item.product.has_sizes %}{{ item.size|upper }}{% else %}N/A{% endif %}</p>
                     <p class="my-0 small text-muted logo-font text-black">Qty: {{ item.quantity }}</p>
+                    {% if item.product.customizable %}
+                    <p class="my-0 small text-muted logo-font text-black">Main Color:
+                        {% if item.main_color %}{{ item.main_color.name }}{% else %}N/A{% endif %}
+                    </p>
+                    <p class="my-0 small text-muted logo-font text-black">Wording Color:
+                        {% if item.wording_color %}{{ item.wording_color.name }}{% else %}N/A{% endif %}
+                    </p>
+                    <p class="my-0 small text-muted logo-font text-black">Writing:
+                        {% if item.writing %}{{ item.writing }}{% else %}N/A{% endif %}
+                    </p>
+                    {% endif %}
                 </div>
                 <div class="col-3 text-right">
                     <p class="my-0 small text-muted logo-font text-black">
@@ -136,7 +147,8 @@
                         <span class="icon">
                             <i class="fas fa-exclamation-circle"></i>
                         </span>
-                        <span class="logo-font">Your card will be charged <strong>£{{ grand_total|floatformat:2 }}</strong></span>
+                        <span class="logo-font">Your card will be charged
+                            <strong>£{{ grand_total|floatformat:2 }}</strong></span>
                     </p>
                 </div>
             </form>

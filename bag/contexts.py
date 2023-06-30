@@ -21,10 +21,13 @@ def bag_contents(request):
             wording_color = None
             writing = None
         else:
-            quantity = item_data['quantity']
-            main_color = item_data.get('main_color')
-            wording_color = item_data.get('wording_color')
+            quantity = item_data.get('quantity')
+            main_color_id = item_data.get('main_color')
+            wording_color_id = item_data.get('wording_color')
             writing = item_data.get('writing')
+
+            main_color = get_object_or_404(Color, pk=main_color_id) if main_color_id else None
+            wording_color = get_object_or_404(Color, pk=wording_color_id) if wording_color_id else None
 
         total += quantity * product.price
         product_count += quantity
@@ -37,11 +40,6 @@ def bag_contents(request):
             'wording_color': wording_color,
             'writing': writing,
         })
-
-        print(f"Item ID: {item_id}")
-        print(f"Main Color: {main_color}")
-        print(f"Wording Color: {wording_color}")
-        print(f"Writing: {writing}")
 
     delivery = total * Decimal(settings.STANDARD_DELIVERY_PERCENTAGE / 100)
 
