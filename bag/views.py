@@ -28,41 +28,46 @@ def add_to_bag(request, item_id):
     if 'product_size' in request.POST:
         size = request.POST['product_size']
 
-        if product.customizable:
-            main_color = request.POST.get('main_color')
-            wording_color = request.POST.get('wording_color')
-            writing = request.POST.get('writing')
+    if product.customizable:
+        main_color = request.POST.get('main_color')
+        wording_color = request.POST.get('wording_color')
+        writing = request.POST.get('writing')
 
-        if item_id in list(bag.keys()):
-            if size in bag[item_id]['items_by_size'].keys():
+    if item_id in bag:
+        if 'items_by_size' in bag[item_id]:
+            if size in bag[item_id]['items_by_size']:
                 bag[item_id]['items_by_size'][size] += quantity
                 messages.success(request, f'Updated size {size.upper()} {product.name} quantity to {bag[item_id]["items_by_size"][size]}')
             else:
                 bag[item_id]['items_by_size'][size] = quantity
                 messages.success(request, f'Added size {size.upper()} {product.name} to your bag')
         else:
-            bag[item_id] = {'items_by_size': {size: quantity}}
-            messages.success(request, f'Added size {size.upper()} {product.name} to your bag')
-
+            if size:
+                bag[item_id]['items_by_size'] = {size: quantity}
+                messages.success(request, f'Added size {size.upper()} {product.name} to your bag')
+            else:
+                bag[item_id]['quantity'] += quantity
+                messages.success(request, f'Added {product.name} to your bag')
     else:
         if product.customizable:
-            main_color = request.POST.get('main_color')
-            wording_color = request.POST.get('wording_color')
-            writing = request.POST.get('writing')
-
-        if item_id in bag:
-            bag[item_id]['quantity'] += quantity
-        else:
-            bag[item_id] = {'quantity': quantity}
-
-    if product.customizable:
-        if item_id in bag:
+            if 'items_by_size' in bag:
+                bag[item_id] = {'items_by_size': {size: quantity}}
+                messages.success(request, f'Added size {size.upper()} {product.name} to your bag')
+            else:
+                bag[item_id] = {'quantity': quantity}
+                messages.success(request, f'Added {product.name} to your bag')
             bag[item_id]['main_color'] = main_color
             bag[item_id]['wording_color'] = wording_color
             bag[item_id]['writing'] = writing
+        else:
+            if 'items_by_size' in bag:
+                bag[item_id] = {'items_by_size': {size: quantity}}
+                messages.success(request, f'Added size {size.upper()} {product.name} to your bag')
+            else:
+                bag[item_id] = {'quantity': quantity}
+                messages.success(request, f'Added {product.name} to your bag')
 
     request.session['bag'] = bag
-    messages.success(request, f'Added {product.name} to your bag')
     return redirect(redirect_url)
 
 
@@ -127,7 +132,7 @@ def remove_from_bag(request, item_id):
     try:
         bag = request.session.get('bag', {})
         product = get_object_or_404(Product, pk=item_id)
-        size = None
+        size = 0
         if 'product_size' in request.POST:
             size = request.POST['product_size']
         bag = request.session.get('bag', {})

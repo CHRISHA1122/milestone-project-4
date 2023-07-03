@@ -14,32 +14,77 @@ def bag_contents(request):
 
     for item_id, item_data in bag.items():
         product = get_object_or_404(Product, pk=item_id)
+        size = None
+        main_color = None
+        wording_color = None
+        writing = None
 
-        if isinstance(item_data, int):
-            quantity = item_data
-            main_color = None
-            wording_color = None
-            writing = None
-        else:
-            quantity = item_data.get('quantity')
-            main_color_id = item_data.get('main_color')
-            wording_color_id = item_data.get('wording_color')
-            writing = item_data.get('writing')
+        if 'items_by_size' in item_data:  # Handle products with sizes
+            for size, quantity in item_data['items_by_size'].items():
+                if product.customizable:
+                    main_color_id = item_data.get('main_color')
+                    wording_color_id = item_data.get('wording_color')
+                    writing = item_data.get('writing')
 
-            main_color = get_object_or_404(Color, pk=main_color_id) if main_color_id else None
-            wording_color = get_object_or_404(Color, pk=wording_color_id) if wording_color_id else None
+                    main_color = get_object_or_404(Color, pk=main_color_id) if main_color_id else None
+                    wording_color = get_object_or_404(Color, pk=wording_color_id) if wording_color_id else None
 
-        total += quantity * product.price
-        product_count += quantity
+                    bag_items.append({
+                        'item_id': item_id,
+                        'size': size,
+                        'quantity': quantity,
+                        'product': product,
+                        'main_color': main_color,
+                        'wording_color': wording_color,
+                        'writing': writing,
+                    })
 
-        bag_items.append({
-            'item_id': item_id,
-            'quantity': quantity,
-            'product': product,
-            'main_color': main_color,
-            'wording_color': wording_color,
-            'writing': writing,
-        })
+                    total += quantity * product.price
+                    product_count += quantity
+                else:
+                    bag_items.append({
+                        'item_id': item_id,
+                        'size': size,
+                        'quantity': quantity,
+                        'product': product,
+                    })
+
+                    total += quantity * product.price
+                    product_count += quantity
+        else:  # Handle products without sizes
+            quantity = item_data.get('quantity', 0)
+
+            if product.customizable:
+                main_color_id = item_data.get('main_color')
+                wording_color_id = item_data.get('wording_color')
+                writing = item_data.get('writing')
+
+                main_color = get_object_or_404(Color, pk=main_color_id) if main_color_id else None
+                wording_color = get_object_or_404(Color, pk=wording_color_id) if wording_color_id else None
+
+                bag_items.append({
+                    'item_id': item_id,
+                    'quantity': quantity,
+                    'product': product,
+                    'main_color': main_color,
+                    'wording_color': wording_color,
+                    'writing': writing,
+                })
+
+                total += quantity * product.price
+                product_count += quantity
+            else:
+                bag_items.append({
+                    'item_id': item_id,
+                    'quantity': quantity,
+                    'product': product,
+                    'main_color': main_color,
+                    'wording_color': wording_color,
+                    'writing': writing,
+                })
+
+                total += quantity * product.price
+                product_count += quantity
 
     delivery = total * Decimal(settings.STANDARD_DELIVERY_PERCENTAGE / 100)
 
