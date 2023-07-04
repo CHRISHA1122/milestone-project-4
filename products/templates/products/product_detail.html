@@ -65,9 +65,9 @@
                     <!-- Add product to basket -->
                     <form id="add-bag" class="form" action="{% url 'add_to_bag' product.id %}" method="POST">
                         {% csrf_token %}
-                        <div class="form-row">
+                        <div class="form-row font-weight-bold">
                             {% if product.customizable %}
-                            <div class="form-group">
+                            <div class="form-group ">
                                 <label for="main-color">Main Colour:</label>
                                 <select class="form-control" id="main-color" name="main_color">
                                     {% for color in form.fields.main_color.queryset %}
@@ -77,8 +77,6 @@
                                     </option>
                                     {% endfor %}
                                 </select>
-                            </div>
-                            <div class="form-group details-form">
                                 <label for="wording-color">Wording Colour:</label>
                                 <select class="form-control" id="wording-color" name="wording_color">
                                     {% for color in form.fields.wording_color.queryset %}
@@ -88,10 +86,10 @@
                                     </option>
                                     {% endfor %}
                                 </select>
-                            </div>
-                            <div class="form-group details-form">
-                                <label for="writing">Choose Writing:</label>
-                                <input type="text" class="form-control" id="writing" name="writing">
+                                <div class="form-group details-form">
+                                    <label for="writing">Choose Writing:</label>
+                                    <input type="text" class="form-control" id="writing" name="writing">
+                                </div>
                             </div>
                             {% endif %}
                             {% with product.has_sizes as s %}
