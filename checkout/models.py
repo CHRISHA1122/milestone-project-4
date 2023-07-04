@@ -68,7 +68,7 @@ class OrderLineItem(models.Model):
     order = models.ForeignKey(Order, null=False, blank=False, on_delete=models.CASCADE, related_name='lineitems')
     product = models.ForeignKey(
         Product, null=False, blank=False, on_delete=models.CASCADE)
-    product_size = models.CharField(max_length=2, null=True, blank=True)
+    product_size = models.CharField(max_length=10, null=True, blank=True)
     quantity = models.IntegerField(null=False, blank=False, default=0)
     main_color = models.ForeignKey(
         Color, null=True, blank=True, on_delete=models.SET_NULL, related_name='main_color_lineitems')
