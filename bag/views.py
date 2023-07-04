@@ -93,20 +93,15 @@ def adjust_bag(request, item_id):
         else:
             messages.error(request, 'Item size does not exist in your bag')
     else:
-        if item_id in bag and isinstance(bag[item_id], int):
-            bag[item_id]['main_color'] = main_color
-            bag[item_id]['wording_color'] = wording_color
-            bag[item_id]['writing'] = writing
-            bag[item_id]['quantity'] = quantity
-        else:
-            bag[item_id] = {
-                'main_color': main_color,
-                'wording_color': wording_color,
-                'writing': writing,
-                'quantity': quantity
-            }
-
-        messages.success(request, f'Updated {product.name} quantity to {bag[item_id]["quantity"]}')
+        if item_id in bag:
+            if 'items_by_size' in bag[item_id]:
+                bag[item_id]['items_by_size'][size] = quantity
+            else:
+                bag[item_id]['quantity'] = quantity
+                bag[item_id]['main_color'] = main_color
+                bag[item_id]['wording_color'] = wording_color
+                bag[item_id]['writing'] = writing
+            messages.success(request, f'Added {product.name} to your bag')
 
     request.session['bag'] = bag
     return redirect(reverse('view_bag'))
