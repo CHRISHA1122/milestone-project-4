@@ -26,11 +26,13 @@ The site includes user authentication and Full CRUD functionality for products.
 
 ## Project Goals
 
-The main aim of the site is to give users a lace to but personalised items.
+The main aim of the site is to give users a place to buy personalised items.
 
 The target audience is anyone wanting to buy items for themself or as a gift.
 
-This version has been built for project 5 of the Code Institute Diploma in Software Development and therefore doesn't accept real payments and any orders made won't be fulfilled.
+This version has been built for project 4 of the Code Institute Diploma in Software Development and therefore doesn't accept real payments and any orders made won't be fulfilled.
+
+The idea came from a family member who sells these products on social media and would like a website.
 
 If you would like to test the payment functionality please feel free to do so by entering the card details below when prompted:
 
@@ -51,6 +53,7 @@ If you would like to test the payment functionality please feel free to do so by
 * View items in my bag to be purchased.
 * Adjust the quantity of items in bag.
 * Easily enter my payment information.
+* Have a profile that saves personal information.
 * View an order confirmation after checkout.
 * Recieve email confirmation after checkout order.
 
@@ -63,7 +66,7 @@ If you would like to test the payment functionality please feel free to do so by
 * To provide the site owner with a place to showcase work and expand there digital presence.
 * To add products.
 * To edit/update products.
-* Delete a product.
+* Delete a products.
 
 ## User Experience - UX
 
@@ -117,7 +120,7 @@ If you would like to test the payment functionality please feel free to do so by
 #### Fonts
 
 * The fonts used were taken from [Google Fonts](https://fonts.google.com/)
-* The fonts Roboto and Lato were used because they are popular and therefore more recognisable.
+* The font Lato was used because it is popular and therefore more recognisable.
 
 #### Icons
 
@@ -126,10 +129,11 @@ If you would like to test the payment functionality please feel free to do so by
 
 #### Colours
 
-![Colour Palette image]()
+![Colour Palette image](assets/readme.images/bm-designs-colour.png)
 
-* The primary colour choices of white and grey were chosen for the navbar and background because they have a clean clear aspect while contrasting well with each other, the grey overlay was taken from the logo.
+* The primary colour choices of white and raisin black were chosen for the navbar and background because they have a clean clear aspect while contrasting well with each other, the raisin black overlay was taken from the logo.
 * Black, grey and white were chosen to make the writing stand out against the background.
+* Sky blue and rusty red were used for highlight certain links.
 
 #### Styling
 
@@ -137,8 +141,8 @@ If you would like to test the payment functionality please feel free to do so by
 
 #### Images
 
-* The logo and products were given to me by a family member who sells personalised items on facebook.
-* The social media links are credited in the credits section.
+* The logo and products were given to me by a family member who sells personalised items on social media.
+* The social media links are taken from [Font awesome](https://fontawesome.com/).
 
 ## Wireframes
 
@@ -152,51 +156,70 @@ The ecommerce website is designed to strictly adhere to accessibility guidelines
 
 #### Navbar and Footer
 
-* The navbr and footer were taken from materialize and styled to suit needs. The same navbar and footer used on every page for easy navigation. Added social media links to the footer.
+![Navbar Image](assets/readme.images/bm-designs-navbar.png)
+
+* The navbr and footer were taken from bootstrap and styled to suit needs. The same navbar and footer used on every page for easy navigation. Added social media links to the footer.
+
+![Footer Image](assets/readme.images/bm-designs-footer.png)
 
 The website is split into 6 apps each with there own html, models, views urls and forms. A number of other folders and files were used for allauth, css and media.
 
 1. Home - index.html
 - Landing page, and first page user encounters when they visit the website, includes a link to the products page.
 
+![Home Image](assets/readme.images/bm-designs-home.png)
 
-2. Log In - signup.html
+2. Register - register.html
+- The user is able to register an account to the website.
+
+![Register Image](assets/readme.images/bm-designs-register.png)
+
+3. Log In - signup.html
 - The user is able to log in to the website using an existing account, otherwise they are invited to create a new one. Once logged in they are redirected to the home page.
 
+![Login Image](assets/readme.images/bm-designs-login.png)
 
-3. Profile - profile.html
-- Available only to the user logged in via which they can view their account info, provides links via which user can change their profile info.
+4. Profile - profile.html
+- Available only to the user logged in via which they can view and save their account/personal info, also provides order history.
 
-
-4. Update Profile - update_profile.html
-- Available only to the user logged in, allows user to change edit their account details.
-
+![Profile Image](assets/readme.images/bm-designs-profile.png)
 
 5. Products - products.html
 - A page where users can see all products.
 
+![Products Image](assets/readme.images/bm-designs-products.png)
 
 6. Product Detail - product_detail.html
-- A page where users can select a product and see all details aswell as sizes and quantity.
+- A page where users can select a product and see all customization details aswell as sizes and quantity.
 
+![Product Details Image](assets/readme.images/bm-designs-productdetail.png)
 
 7. Add Product - add_product.html
 - Only available to superusers so they can add new products.
 
+![Add Product Image](assets/readme.images/bm-designs-addproduct.png)
+![Add Product Image](assets/readme.images/bm-designs-addproduct-2.png)
 
 8. Edit Product - edit_product.html
-- Only available to superusers so they can edit existing products.
+- Only available to superusers so they can edit existing products. The same as add product except all the original fields are already filled in and editable.
+
+![Edit Product Image](assets/readme.images/bm-designs-editproduct.png)
 
 9. Bag - bag.html
-- A page where users can see the products thet have selected to buy aswell as the total cost.
+- A page where users can see the products that they have selected to buy aswell as the total cost.
 
+![Bag Image](assets/readme.images/bm-designs-bag.png)
 
 10. Checkout - checkout.html
 - A page where users can fill in there personal details and complete an order.
 
+![Checkout Image](assets/readme.images/bm-designs-checkout.png)
+![Checkout Image](assets/readme.images/bm-designs-checkout-2.png)
 
 11. Checkout Success - checkout_success.html
-- A page where users can see there order confirmed.
+- A page where users can see there order confirmed with all the details.
+
+![Checkout Success Image](assets/readme.images/bm-designs-checkoutsuccess.png)
 
 
 ### Back-End Structure
@@ -212,7 +235,6 @@ There are 8 individual models in 3 apps
 - CustomizableProduct - stores all customizable product details.
 - Order - stores users details.
 - OrderLineItem - stores product order details.
-- UserProfile - stores profile data.
 - UserProfile - stores profile data.
 
 ![Physical Database Model]()
