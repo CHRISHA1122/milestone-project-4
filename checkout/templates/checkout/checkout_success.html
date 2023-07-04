@@ -61,8 +61,15 @@
                 <div class="row">
                     <div class="col-12 col-md-4">
                         <p class="small mb-0 text-black font-weight-bold">
-                            {{ item.product.name }}{% if item.product_size %} - Size
-                            {{ item.product_size|upper }}{% endif %}
+                            {{ item.product.name }}
+                            <br>
+                            {% if item.product_size %}Size: {{ item.product_size|upper }}{% else %}N/A{% endif %}
+                            <br>
+                            {% if item.main_color %}Colour: {{ item.main_color.name }}{% else %}N/A{% endif %}
+                            <br>
+                            {% if item.wording_color %}Wording Colour: {{ item.wording_color.name }}{% else %}N/A{% endif %}
+                            <br>
+                            {% if item.writing %}Writing: {{ item.writing }}{% else %}N/A{% endif %}
                         </p>
                     </div>
                     <div class="col-12 col-md-8 text-md-right">
@@ -200,16 +207,16 @@
                 <span class="text-uppercase">Back to Profile</span>
             </a>
             {% else %}
-                <a href="{% url 'products' %}?category=new_arrivals,deals"
-                    class="btn btn-outline-black logo-font rounded-0 btn-lg my-2">
-                    <span class="icon mr-2">
-                        <i class="fas fa-gifts"></i>
-                    </span>
-                    <span>Check our latest deals here!</span>
-                </a>
-                {% endif %}
-            </div>
+            <a href="{% url 'products' %}?category=new_arrivals,deals"
+                class="btn btn-outline-black logo-font rounded-0 btn-lg my-2">
+                <span class="icon mr-2">
+                    <i class="fas fa-gifts"></i>
+                </span>
+                <span>Check our latest deals here!</span>
+            </a>
+            {% endif %}
         </div>
     </div>
+</div>
 </div>
 {% endblock %}

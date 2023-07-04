@@ -80,7 +80,6 @@ def adjust_bag(request, item_id):
 
     if 'product_size' in request.POST:
         size = request.POST['product_size']
-    print(f"Size: {size}")
 
     if product.customizable:
         main_color = request.POST.get('main_color')
@@ -95,13 +94,6 @@ def adjust_bag(request, item_id):
             messages.error(request, 'Item size does not exist in your bag')
     else:
         if item_id in bag and isinstance(bag[item_id], int):
-            bag[item_id] = {
-                'quantity': bag[item_id],
-                'main_color': main_color,
-                'wording_color': wording_color,
-                'writing': writing
-            }
-        elif item_id in bag:
             bag[item_id]['main_color'] = main_color
             bag[item_id]['wording_color'] = wording_color
             bag[item_id]['writing'] = writing

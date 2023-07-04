@@ -5,7 +5,7 @@ from django.db import models
 from django.db.models import Sum
 from django.conf import settings
 
-from products.models import Product
+from products.models import Product, Color
 from profiles.models import UserProfile
 
 # Create models
@@ -70,6 +70,11 @@ class OrderLineItem(models.Model):
         Product, null=False, blank=False, on_delete=models.CASCADE)
     product_size = models.CharField(max_length=2, null=True, blank=True)
     quantity = models.IntegerField(null=False, blank=False, default=0)
+    main_color = models.ForeignKey(
+        Color, null=True, blank=True, on_delete=models.SET_NULL, related_name='main_color_lineitems')
+    wording_color = models.ForeignKey(
+        Color, null=True, blank=True, on_delete=models.SET_NULL, related_name='wording_color_lineitems')
+    writing = models.CharField(max_length=100, null=True, blank=True)
     lineitem_total = models.DecimalField(max_digits=6, decimal_places=2, null=False, blank=False, editable=False)
 
     def save(self, *args, **kwargs):

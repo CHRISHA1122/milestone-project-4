@@ -73,11 +73,19 @@ def checkout(request):
                         order_line_item.save()
                     else:
                         for size, quantity in item_data.get('items_by_size', {}).items():
+                            main_color_id = item_data.get('main_color')
+                            wording_color_id = item_data.get('wording_color')
+                            main_color = Color.objects.get(id=main_color_id) if main_color_id else None
+                            wording_color = Color.objects.get(id=wording_color_id) if wording_color_id else None
+                            writing = item_data.get('writing')
                             order_line_item = OrderLineItem(
                                 order=order,
                                 product=product,
                                 quantity=quantity,
                                 product_size=size,
+                                main_color=main_color,
+                                wording_color=wording_color,
+                                writing=writing,
                             )
                             order_line_item.save()
                 except Product.DoesNotExist:
@@ -149,6 +157,8 @@ def checkout_success(request, order_number):
     save_info = request.session.get('save_info')
     order = get_object_or_404(Order, order_number=order_number)
 
+    lineitems = order.lineitems.all()
+
     if request.user.is_authenticated:
         profile = UserProfile.objects.get(user=request.user)
         # Attach the user's profile to the order
@@ -180,6 +190,7 @@ def checkout_success(request, order_number):
     template = 'checkout/checkout_success.html'
     context = {
         'order': order,
+        'lineitems': lineitems,
     }
 
     return render(request, template, context)
