@@ -11,15 +11,19 @@ def bag_contents(request):
     product_count = 0
     delivery = 0
     bag = request.session.get('bag', {})
+    if isinstance(bag, int):
+        bag = {}
 
     for item_id, item_data in bag.items():
         product = get_object_or_404(Product, pk=item_id)
-        size = None
-        main_color = None
-        wording_color = None
-        writing = None
+        size = request.POST.get('product_size')
+        main_color = request.POST.get('main_color')
+        wording_color = request.POST.get('wording_color')
+        writing = request.POST.get('writing')
 
-        if 'items_by_size' in item_data:  # Handle products with sizes
+        items_by_size = item_data.get('items_by_size')
+
+        if 'items_by_size' in item_data and isinstance(items_by_size, dict):  # Handle products with sizes
             for size, quantity in item_data['items_by_size'].items():
                 if product.customizable:
                     main_color_id = item_data.get('main_color')
@@ -78,16 +82,12 @@ def bag_contents(request):
                     'item_id': item_id,
                     'quantity': quantity,
                     'product': product,
-                    'main_color': main_color,
-                    'wording_color': wording_color,
-                    'writing': writing,
                 })
 
                 total += quantity * product.price
                 product_count += quantity
 
     delivery = total * Decimal(settings.STANDARD_DELIVERY_PERCENTAGE / 100)
-
     grand_total = delivery + total
 
     context = {
