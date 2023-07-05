@@ -3,7 +3,7 @@
 ## E-Commerce store for personalised items.
 ------------------------------------
 
-![Image showing Website on different devices]()
+![Image showing Website on different devices](assets/readme.images/bm-designs-amiresponsive.png)
 
 [View the live site here](https://milestone-project-4-bmdesigns-bfbe9959c9ae.herokuapp.com/)
 
@@ -149,7 +149,67 @@ If you would like to test the payment functionality please feel free to do so by
 
 ## Wireframes
 
-Wireframes for the project were developed after the idea was scribbled on a piece of paper, the program used being Figma.
+Wireframes for the project were developed after the idea was scribbled on a piece of paper, the program used being [Visual Paradigm](https://online.visual-paradigm.com).
+
+### Desktop Wireframe
+
+* Home Page
+
+![Home Wireframe](assets/readme.images/bm-designs-homewireframe.png)
+
+* Product Page
+
+![Product Wireframe](assets/readme.images/bm-designs-productwireframe.png)
+
+* Product Detail Page
+
+![Product Detail Wireframe](assets/readme.images/bm-designs-productdetailwireframe.png)
+
+* Checkout Page
+
+![Checkout Wireframe](assets/readme.images/bm-designs-checkoutwireframe.png)
+
+* Checkout Success Page
+
+![Checkout Success Wireframe](assets/readme.images/bm-designs-checkoutsuccesswireframe.png)
+
+* Register/Login Page
+
+![Register/Login Wireframe](assets/readme.images/bm-designs-signin-register-wireframe.png)
+
+* Profile Page
+
+![Profile Wireframe](assets/readme.images/bm-designs-profilewireframe.png)
+
+### Mobile Wireframe
+
+* Home Page
+
+![Home Wireframe](assets/readme.images/bm-designs-mobile-homewireframe.png)
+
+* Product Page
+
+![Product Wireframe](assets/readme.images/bm-designs-mobile-productwireframe.png)
+
+* Product Detail Page
+
+![Product Detail Wireframe](assets/readme.images/bm-designs-mobile-productdetailwireframe.png)
+
+* Checkout Page
+
+![Checkout Wireframe](assets/readme.images/bm-designs-mobile-checkoutwireframe.png)
+
+* Checkout Success Page
+
+![Checkout Success Wireframe](assets/readme.images/bm-designs-mobile-checkoutsuccesswireframe.png)
+
+* Register/Login Page
+
+![Register/Login Wireframe](assets/readme.images/bm-designs-mobile-signin-register-wireframe.png)
+
+* Profile Page
+
+![Profile Wireframe](assets/readme.images/bm-designs-mobile-profilewireframe.png)
 
 ## Features
 
@@ -231,16 +291,15 @@ The website is split into 6 apps each with there own html, models, views urls an
 
 Below model displays all fields stored in the database collection.
 
-There are 8 individual models in 3 apps
+There are 6 individual models in 3 apps
 - Category - stores all categories.
 - Color - stores all colour options.
 - Product - stores product data.
-- CustomizableProduct - stores all customizable product details.
 - Order - stores users details.
 - OrderLineItem - stores product order details.
 - UserProfile - stores profile data.
 
-![Physical Database Model]()
+![Physical Database Model](assets/readme.images/bm-designs-database.png)
 
 * Built with Django using Postgresql and AWS for the database.
 The application structure is as follows:
@@ -295,6 +354,16 @@ Gitpod terminal was used to commit my code using Git and push it to Github.
 Heroku was used to deploy the project.
 - [Bootstrap](https://getbootstrap.com/)
 Bootstrap was used for its easy design and responsiveness.
+- [Am I Responsive](https://ui.dev/amiresponsive)
+Am I responsive was used to ensure the website is responsive on all devices.
+- [W3C Validation](https://validator.w3.org/)
+W3C Validation was uesd for checking HTML and CSS for mistakes.
+- [ES6 Validator](https://www.piliapp.com/syntax-check/es6/)
+ES6 Validator was uesd for checking JS files for mistakes.
+- [pycodestyle Validator](https://pypi.org/project/pycodestyle/)
+Pycodestyle Validator was uesd for checking Python files for mistakes.
+- [Visual Paradigm](https://online.visual-paradigm.com)
+Visual Paradigm was uesd for physical database model.
 
 ## Testing
 
@@ -318,21 +387,56 @@ Checked the website on my own mobile and other family members with no problems:
 * Samsung Galaxy
 * Dev Tools Mobile Responsiveness
 
-![Lighthouse testing](assets/readme.images/mobile-performance-camocode.png)
+![Lighthouse testing](assets/readme.images/bm-designs-mobile.png)
 
 ### HTML Validator
 
+HTML Validator using [W3C Validation](https://validator.w3.org/) confirms no errors or warnings.
+
+![HTML Validator](assets/readme.images/bm-designs-htmlvalidator.png)
+
 ### CSS Validator
+
+CSS Validator using [W3C Validation](https://jigsaw.w3.org/css-validator/) with the only error bieng from an imported materialize file that I dont have access to.
+
+![CSS Validator](assets/readme.images/bm-designs-cssvalidator.png)
 
 ### JS Validator
 
+JS Validator using [ES6 Syntax Check](https://www.piliapp.com/syntax-check/es6/) confirms no errors found.
+
+![JS Validator](assets/readme.images/bm-designs-jsvalidator.png)
+
 ### Python Validator
+
+Python Validator using [pycodestyle Syntax Check](https://pypi.org/project/pycodestyle/) was used to validate Python code for PEP8 compliance.
 
 ### Manual Testing
 
+* Landing/Home Page - Due to the nature and structure of the website, the user can tell immediately what the goal of the site is - As expected.
+* Log In Page - User clicks on Log In button in the navbar which takes them to the sign up page where they can create an account - As expected.
+* Register Page - User clicks on Register button in the navbar which takes them to the registration page where they can create a profile - As expected.
+* Profile Page - User clicks on Profile button in the navbar which takes them to the profile page where they can edit personal info and look at orders - As expected.
+* Home Page - User clicks on Home button in the navbar which takes them to the home page where they can see a list of most recent posts - As expected.
+* Products Page - User clicks on Shop Now button in the home page which takes them to the products page where they can browse the product range - As expected.
+* Products Detail - User clicks on a product which takes them to the product deatail page where they can customize a product before purchasing - As expected.
+* Bag - User clicks on add to bag in product deatail which takes them to the shopping bag where they can review there order and update or delete orders - As expected.
+* Checkout Page - User clicks on checkout button in the bag page which takes them to the checkout page where they can see there order and fill in there personal info and credit card details to complete purchase, if the user creates an account there details are stored - As expected.
+* Checkout Success - User clicks on complete order button in the checkout page which takes them to the checkout success page where they get all the order and delivery address info and an email confirming there purchase - As expected.
+* Customized Products - Tested all different customizable and size combinations of products through to the checkout success to make sure they all saved - As expected.
+
 ### Bugs
 
+* Social link not showing on webpage once deployed:
+FIX - Changed the icons to [Font awesome](https://fontawesome.com/).
+* Not all products showing details with sizes in checkout:
+FIX - Changed the add_to_bag views.
+
 ### Future Updates
+
+* Add colour background to colour options, started but didn,t finish in time for project submission.
+* Add contact page.
+* Add different sizes for different aged clothes.
 
 ## Deployment
 
@@ -343,7 +447,7 @@ To clone this project into Github you will need:
 1. A Github account.
 2. Install the Gitpod extension.
 3. Log into Gitpod with your Github account.
-4. On the GitHub website find and click on the [Github repository](https://github.com/CHRISHA1122/milestone-project-3) of intrest.
+4. On the GitHub website find and click on the [Github repository](https://github.com/CHRISHA1122/milestone-project-4) of intrest.
 5. Locate the green button named Gitpod in the top right corner of the repository and click on it,
 6. This will trigger a new Gitpod workspace to be created from the code in Github where you can work locally.
 
@@ -394,15 +498,102 @@ If the above steps have been followed correctly you will be greeted by your webs
 11. Return to the ElephantSQL dashboard and click on the database instance name for this project.
 12. In the URL section, clicking the copy icon will copy the database URL to your clipboard you will need it for the heroku set up.
 
+### AWS
+
+! NOTE: These instructions are for setting up AWS hosting as of 5/1/23 - these may change slightly in future versions of AWS.
+
+1. Sign up or login to your [aws amazon account](https://aws.amazon.com) on the top right by using the manage my account button and then navigate to S3 to create a new bucket.
+2. The bucket will be used to store our files, so it is a good idea to name this bucket the same as your project. Select the region closest to you. In the object ownership section we need to select ACLs enabled and then select bucket owner preferred. In the block public access section uncheck the block public access box. You will then need to tick the acknowledge button to make the bucket public. Click create bucket.
+3. Click the bucket you've just created and then select the properties tab at the top of the page. Find the static web hosting section and choose enable static web hosting, host a static website and enter index.html and error.html for the index and error documents (these won't actually be used.)
+4. Open the permissions tab and copy the ARN (amazon resource name). Navigate to the bucket policy section click edit and select policy generator. The policy type will be S3 bucket policy, we want to allow all principles by adding `*` to the input and the actions will be get object. Paste the ARN we copied from the last page into the ARN input and then click add statement. Click generate policy and copy the policy that displays in a new pop up. Paste this policy into the bucket policy editor and make the following changes: Add a `/*` at the end of the resource value. Click save.
+5. Next we need to edit the the cross-origin resource sharing (CORS).
+6. Now we need to edit the access control list (ACL) section. Click edit and enable list for everyone(public access) and accept the warning box.
+
+#### Creating AWS groups, policies and users
+
+1. Click the services icon on the top right of the page and navigate to IAM - manage access to AWS services. On the left hand navigation menu click user groups and then click the create group button in the top right. This will create the group that our user will be placed in.
+2. Choose a name for your group - for example manage-seaside-sewing, and click the create policy button on the right. This will open a new page.
+3. Click on the JSON tab and then click the link for import managed policy on the top right of the page.
+4. Search for S3 and select the one called AmazonS3FullAccess, then click import.
+5. We need to make a change to the resources, we need to make resources an array and then change the value for resources. Instead of a `*` which allows all access, we want to paste in our ARN. followed by a comma, and then paste the ARN in again on the next line with `/*` at the end. This allows all actions on our bucket, and all the resources in it.
+6. Click the next: tags button and then the next:review .
+7. Give the policy a name and description (e.g. seaside-sewing-policy | Access to S3 bucket for seaside sewing static files.) Click the create policy button.
+8. Now we need to atach the policy we just created. On the left hand navigation menu click user groups, select the group and go to the permissions tab. Click the add permissions button on the right and choose attach policies from the dropdown.
+9. Select the policy you just created and then click add permissions at the bottom.
+10. Now we'll create a user for the group by clicking on the user link in the left hand navigation menu, clicking the add users button on the top right and giving our user a username (e.g. seaside-sewing-staticfiles-user). Select programmatic access and then click the next: permissions button.
+11. Add the user to the group you just created and then click next:tags button, next:review button and then create user button.
+12. You will now need to download the CSV file as this contains the user access key and secret access key that we need to insert into the Heroku config vars. Make sure you download the CSV now as you won't be able to access it again.
+
+#### Connecting Django to our S3 bucket
+
+1. Install boto3 and django storages and freeze them to the requirements.txt file.
+- pip3 install boto3
+- pip3 install django-storages
+- pip3 freeze > requirements.txt
+2. Add `storages` to the installed apps in settings.py
+3. Add the following code in settings.py to use our bucket if we are using the deployed site:
+- if 'USE_AWS' in os.environ:
+    AWS_S3_OBJECT_PARAMETERS = {
+    'Expires': 'Thu, 31 Dec 2099 20:00:00 GMT',
+    'CacheControl': 'max-age=9460800',
+    }  
+- AWS_STORAGE_BUCKET_NAME = 'enter your bucket name here'
+- AWS_S3_REGION_NAME = 'enter the region you selected here'
+- AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
+- AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
+- AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
+4. In Heroku we can now add these keys to our config vars:
+- AWS_ACCESS_KEY_ID: The access key value from the amazon csv file downloaded in the last section |
+- AWS_SECRET_ACCESS_KEY: The secret access key from the amazon csv file downloaded in the last 
+- USE_AWS: True
+5. Remove the DISABLE_COLLECTSTATIC variable.
+6. Create a file called custom_storages.py in the root and import settings and S3Botot3Storage. Create a custom class for static files and one for media files. These will tell the app the location to store static and media files.
+7. Add the following to settings.py to let the app know where to store static and media files, and to override the static and media URLs in production.
+- STATICFILES_STORAGE = 'custom_storages.StaticStorage'
+- STATICFILES_LOCATION = 'static'
+- DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
+- MEDIAFILES_LOCATION = 'media'
+- STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{STATICFILES_LOCATION}/'
+- MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{MEDIAFILES_LOCATION}/'
+8. Save, add, commit and push these changes to make a deployment to Heroku. In the build log you should be able to see that the static files were collected, and if we check our S3 bucket we can see the static folder which has all the static files in it.
+9. Navigate to S3 and open your bucket. We now want to create a new file to hold all the media files for our site. We can do this by clicking the create folder button on the top right and naming the folder media.
+
+#### **Setting up Stripe**
+
+1. We now need to add our Stripe keys to our config vars in Heroku to keep these out of our code and keep them private. Log into Stripe, click developers and then API keys.
+2. Create 2 new variables in Heroku's config vars - for the publishable key (STRIPE_PUBLIC_KEY) and the secret key (STRIPE_SECRET_KEY) and paste the values in from the Stripe page.
+3. Now we need to add the WebHook endpoint for the deployed site. Navigate to the WebHooks link in the left hand menu and click add endpoint button.
+4. Add the URL for our deployed sites WebHook, give it a description and then click the add events button and select all events. Click Create endpoint.
+5. Now we can add the WebHook signing secret to our Heroku config variables as STRIPE_WH_SECRET.
+6. In settings.py:
+- STRIPE_PUBLIC_KEY = os.getenv('STRIPE_PUBLIC_KEY', '')
+- STRIPE_SECRET_KEY = os.getenv('STRIPE_SECRET_KEY', '')
+- STRIPE_WH_SECRET = os.getenv('STRIPE_WH_SECRET', '')
+
+
+
+
+
 ## Credits
 
 ### Code
 
+I have used predominantly my own code and what I learned through the code institute lessons.
+
+* [Code Institute](https://codeinstitute.net) what i've learned from the learning material.
+* [Real Python](https://realpython.com/) for problems with database.
+* [W3Schools](https://www.w3schools.com/) any trouble shooting.
+* [Webtips.dev](https://www.webtips.dev/) any trouble shooting.
+
 ### Images
+
+* Images used for icons were taken from [Font awesome](https://fontawesome.com/).
+* All images for the products and the logo were given to me by a family member who sells them through social media.
 
 ## Acknowledgements
 
 * I would like to thank the [Code Institute](https://codeinstitute.net) for the learning material and all the other support on offer.
 * I would like to thank my mentor for all the help and guidence through the project.
+* And last I would like to thank Shipley College and my tutor for all the help through the course.
 
 
