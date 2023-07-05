@@ -300,6 +300,14 @@ Bootstrap was used for its easy design and responsiveness.
 
 ### Browsers
 
+Developer tools on Firefox and Google Chrome were used throughout the project.
+The website was tested on three different browsers with no problems:
+
+* Microsoft Edge
+* Google Chrome
+* Mozila Firefox
+
+![Lighthouse testing](assets/readme.images/desktop-performance-camocode.png)
 
 ### Mobile
 
