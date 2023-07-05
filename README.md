@@ -307,9 +307,18 @@ The website was tested on three different browsers with no problems:
 * Google Chrome
 * Mozila Firefox
 
-![Lighthouse testing](assets/readme.images/desktop-performance-camocode.png)
+![Lighthouse testing](assets/readme.images/bm-designs-desktop.png)
 
 ### Mobile
+
+Developer tools on Firefox and Google Chrome were used throughout the project to check site responsiveness.
+Checked the website on my own mobile and other family members with no problems:
+
+* Iphone
+* Samsung Galaxy
+* Dev Tools Mobile Responsiveness
+
+![Lighthouse testing](assets/readme.images/mobile-performance-camocode.png)
 
 ### HTML Validator
 
