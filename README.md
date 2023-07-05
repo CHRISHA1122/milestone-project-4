@@ -64,9 +64,12 @@ If you would like to test the payment functionality please feel free to do so by
 * A project that would be good enough to go in a portfolio.
 * A site to sell products.
 * To provide the site owner with a place to showcase work and expand there digital presence.
-* To add products.
-* To edit/update products.
-* Delete a products.
+* I want potential users to know from the start what the site's purpose is.
+* I want potential users to be able to register for an account.
+* I want existing users to be able to be able to login.
+* I want to add products.
+* I want to edit/update products.
+* I want to be able to delete products.
 
 ## User Experience - UX
 
@@ -75,36 +78,36 @@ If you would like to test the payment functionality please feel free to do so by
 #### Potential/Existing User Stories
 
 - User Sign in or Sign out
-	* User Account Login / Logout - As a User, I would like to be able to login or logout of my account, so that I can avail of the sites full functionality
-	* Receive Welcome Emails - As a user I would like to receive a welcome email upon signing up
-    * Reset password Functionality - As a user I would like to be able to reset my password to keep my account safe
-    * Visibly logged in or out - As a user I would like to know if I am logged in or not
+	* User Account Login / Logout - As a User, I would like to be able to login or logout of my account, so that I can avail of the sites full functionality.
+	* Receive Welcome Emails - As a user I would like to receive a welcome email upon signing up.
+    * Reset password Functionality - As a user I would like to be able to reset my password to keep my account safe.
+    * Visibly logged in or out - As a user I would like to know if I am logged in or not.
 
 - Landing page
-	* As a User I would like to be brought to the landing page upon first visiting the site so that I can see what options are available to me
-    * As a User from the landing page I should clearly be able to see and navigate the navbar
-    * As a User on the landing page I should be easily able to go straight to the shop and purchase an item
+	* As a User I would like to be brought to the landing page upon first visiting the site so that I can see what options are available to me.
+    * As a User from the landing page I should clearly be able to see and navigate the navbar.
+    * As a User on the landing page I should be easily able to go straight to the shop and purchase an item.
 
 - View Products, Admin CRUD
     * As a user I should be easily able to see a list of products available.
     * As a user I should be able to click on any item to see more information about it.
-    * As an Admin I can add products to the database
-    * As an admin I can edit products in the database
-    * As an admin I can delete products from the database
+    * As an Admin I can add products to the database.
+    * As an admin I can edit products in the database.
+    * As an admin I can delete products from the database.
 
 - Shopping Cart
-    * As a user I can easily view the contents of my Cart
-    * As a user I can easily add/edit/delete the contents of my Cart
-    * As a user I can easily identify the total cost of my Cart
+    * As a user I can easily view the contents of my Cart.
+    * As a user I can easily add/edit/delete the contents of my bag.
+    * As a user I can easily identify the total cost of my bag.
 
 - User Feedback/Confirmation
-    * As a user I receive prompt feedback concerning my activity on the site
-    * As a user I can see a order confirmation message
-    * As a user I receive an order confirmation email
+    * As a user I receive prompt feedback concerning my activity on the site.
+    * As a user I can see a order confirmation message.
+    * As a user I receive an order confirmation email.
 
 - Payment Feature
-    * As a user I can visit a payment screen
-    * As a user I can input my credit/debit card details
+    * As a user I can visit a payment screen.
+    * As a user I can input my credit/debit card details.
 
 - User Profile
     * As a user I can sign in/create a profile so that personal information can be stored.
