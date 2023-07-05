@@ -29,7 +29,6 @@ body {
 
 /* -------------------------------- Base HTML */
 .navbar {
-    max-height: auto;
     background-color: #272727;
 }
 
