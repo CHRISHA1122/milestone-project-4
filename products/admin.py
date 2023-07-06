@@ -4,6 +4,7 @@ from .models import Category, Product, Color
 # Register models
 
 
+# Product admin model
 class ProductAdmin(admin.ModelAdmin):
     list_display = (
         'name',
@@ -18,15 +19,18 @@ class ProductAdmin(admin.ModelAdmin):
 
     fieldsets = (
         (None, {
-            'fields': ('category', 'sku', 'name', 'description', 'price', 'image')
+            'fields': (
+                'category', 'sku', 'name', 'description', 'price', 'image')
         }),
         ('Customization', {
-            'fields': ('customizable', 'main_color', 'wording_color', 'writing'),
+            'fields': (
+                'customizable', 'main_color', 'wording_color', 'writing'),
             'classes': ('collapse',)
         }),
     )
 
 
+# Category admin model
 class CategoryAdmin(admin.ModelAdmin):
     list_display = (
         'friendly_name',

@@ -1,7 +1,9 @@
+<!-- Product Info -->
 <p class="my-0"><strong>{{ item.product.name }}</strong></p>
 <p class="my-0"><strong>Size: </strong>{% if item.product.has_sizes %}{{ item.size|upper }}{% else %}N/A{% endif %}</p>
 <p class="my-0 small text-muted">SKU: {{ item.product.sku|upper }}</p>
-<p class="my-0"><strong>Main Color:</strong> {% if item.main_color %}{{ item.main_color.name }}{% else %}N/A{% endif %}</p>
-<p class="my-0"><strong>Wording Color:</strong> {% if item.wording_color %}{{ item.wording_color.name }}{% else %}N/A{% endif %}</p>
+<p class="my-0"><strong>Main Color:</strong> {% if item.main_color %}{{ item.main_color.name }}{% else %}N/A{% endif %}
+</p>
+<p class="my-0"><strong>Wording Color:</strong>
+    {% if item.wording_color %}{{ item.wording_color.name }}{% else %}N/A{% endif %}</p>
 <p class="my-0"><strong>Writing:</strong> {% if item.writing %}{{ item.writing }}{% else %}N/A{% endif %}</p>
-

@@ -3,6 +3,8 @@
 <!doctype html>
 <html lang="en">
 
+<!-- Base HTML -->
+
 <head>
   <!-- Required meta tags -->
   {% block meta %}
@@ -12,7 +14,8 @@
   {% endblock %}
 
   {% block extra_meta %}
-  <meta name="description" content=" BMDesignsgoodsstudio. From custom-made, personalized clothing and accessories to unique gifts for all ages">
+  <meta name="description"
+    content=" BMDesignsgoodsstudio. From custom-made, personalized clothing and accessories to unique gifts for all ages">
   {% endblock %}
 
   <!-- Bootstrap CSS -->
@@ -32,6 +35,7 @@
 
 <body>
 
+  <!-- Header -->
   <header class="container-fluid fixed-top">
     <div id="topnav" class="row bg-white d-none d-lg-flex">
       <div class="col-12 col-lg-4 my-auto py-1 py-lg-0 text-center text-lg-left">
@@ -39,7 +43,7 @@
           <h2 class="logo-font text-black my-0"><strong>BMDesignsgoodsstudio</strong></h2>
         </a>
       </div>
-      <!-- Bootstrap form for search bar -->
+      <!-- Bootstrap form for search bar, modified and styled to suit needs -->
       <div class="col-12 col-lg-4 my-auto py-1 py-lg-0 d-flex justify-content-end">
         <form method="GET" action="{% url 'products' %}">
           <div class="input-group w-100">
@@ -55,7 +59,7 @@
           </div>
         </form>
       </div>
-      <!-- Account/Profile using Bootstrap/Allauth -->
+      <!-- Account/Profile using Bootstrap/Allauth, modified and styled to suit needs -->
       <div class="col-12 col-lg-4 my-auto py-1 py-lg-0">
         <ul class="list-inline list-unstyled text-center text-lg-right my-0">
           <li class="list-inline-item dropdown">
@@ -97,6 +101,7 @@
         </ul>
       </div>
     </div>
+    <!-- Navbar -->
     <div class="row bg-white">
       <nav class="navbar navbar-expand-lg navbar-light w-100">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-nav"
@@ -109,21 +114,22 @@
     </div>
   </header>
 
+  <!-- Main content container -->
   {% if messages %}
   <div class="message-container">
     {% for message in messages %}
-                {% with message.level as level %}
-                    {% if level == 40 %}
-                        {% include 'includes/toasts/toast_error.html' %}
-                    {% elif level == 30 %}
-                        {% include 'includes/toasts/toast_warning.html' %}
-                    {% elif level == 25 %}
-                        {% include 'includes/toasts/toast_success.html' %}
-                    {% else %}
-                        {% include 'includes/toasts/toast_info.html' %}
-                    {% endif %}
-                {% endwith %}
-            {% endfor %}
+    {% with message.level as level %}
+    {% if level == 40 %}
+    {% include 'includes/toasts/toast_error.html' %}
+    {% elif level == 30 %}
+    {% include 'includes/toasts/toast_warning.html' %}
+    {% elif level == 25 %}
+    {% include 'includes/toasts/toast_success.html' %}
+    {% else %}
+    {% include 'includes/toasts/toast_info.html' %}
+    {% endif %}
+    {% endwith %}
+    {% endfor %}
   </div>
   {% endif %}
 
@@ -133,6 +139,7 @@
   {% block content %}
   {% endblock %}
 
+  <!-- Used Bootstrap for footer, modified and styled to suit needs -->
   <footer class="container-fluid mt-3 mt-auto footer">
     <div class="row bg-white pt-lg-2">
       <div class="col-12 col-lg-4 my-auto py-1 py-lg-0 text-center text-lg-left">
@@ -184,7 +191,7 @@
   <!-- Stripe -->
   <script src="https://js.stripe.com/v3/"></script>
   <script>
-    $(document).ready(function() {
+    $(document).ready(function () {
       $('.toast').toast('show');
     });
   </script>

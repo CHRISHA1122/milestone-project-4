@@ -1,14 +1,18 @@
 {% extends "base.html" %}
 {% load static %}
 
+<!-- Index HTML -->
+
+<!-- Header -->
 {% block page_header %}
-    <div class="container header-container">
-        <div class="row">
-            <div class="col"></div>
-        </div>
+<div class="container header-container">
+    <div class="row">
+        <div class="col"></div>
     </div>
+</div>
 {% endblock %}
 
+<!-- Main content container -->
 {% block content %}
 <div class="container h-100">
     <div class="row h-100 justify-content-center align-items-end">
@@ -18,7 +22,8 @@
                     We make personalised items!
                 </h3>
                 <h4>
-                    <a href="{% url 'products' %}" class="shop-now-button btn btn-lg rounded-0 text-uppercase py-3">Shop Now!</a>
+                    <a href="{% url 'products' %}" class="shop-now-button btn btn-lg rounded-0 text-uppercase py-3">Shop
+                        Now!</a>
                 </h4>
             </div>
         </div>

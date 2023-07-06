@@ -17,6 +17,7 @@ import json
 # Create views
 
 
+# Checkout cache view
 @require_POST
 def cache_checkout_data(request):
     try:
@@ -34,6 +35,7 @@ def cache_checkout_data(request):
         return HttpResponse(content=e, status=400)
 
 
+# Checkout view
 def checkout(request):
     stripe_public_key = settings.STRIPE_PUBLIC_KEY
     stripe_secret_key = settings.STRIPE_SECRET_KEY
@@ -72,11 +74,14 @@ def checkout(request):
                         )
                         order_line_item.save()
                     else:
-                        for size, quantity in item_data.get('items_by_size', {}).items():
+                        for size, quantity in item_data.get(
+                                'items_by_size', {}).items():
                             main_color_id = item_data.get('main_color')
                             wording_color_id = item_data.get('wording_color')
-                            main_color = Color.objects.get(id=main_color_id) if main_color_id else None
-                            wording_color = Color.objects.get(id=wording_color_id) if wording_color_id else None
+                            main_color = Color.objects.get(
+                                id=main_color_id) if main_color_id else None
+                            wording_color = Color.objects.get(
+                                id=wording_color_id) if wording_color_id else None
                             writing = item_data.get('writing')
                             order_line_item = OrderLineItem(
                                 order=order,
@@ -97,7 +102,8 @@ def checkout(request):
                     return redirect(reverse('view_bag'))
 
             request.session['save_info'] = 'save-info' in request.POST
-            return redirect(reverse('checkout_success', args=[order.order_number]))
+            return redirect(reverse(
+                'checkout_success', args=[order.order_number]))
         else:
             messages.error(request, 'There was an error with your form. \
                 Please double check your information.')
@@ -105,7 +111,8 @@ def checkout(request):
     else:
         bag = request.session.get('bag', {})
         if not bag:
-            messages.error(request, "There's nothing in your bag at the moment")
+            messages.error(
+                request, "There's nothing in your bag at the moment")
             return redirect(reverse('products'))
 
         current_bag = bag_contents(request)
@@ -150,6 +157,7 @@ def checkout(request):
     return render(request, template, context)
 
 
+# Checkout success view
 def checkout_success(request, order_number):
     """
     Handle successful checkouts

@@ -3,10 +3,13 @@ from .widgets import CustomClearableFileInput
 from .models import Product, Category, Color
 
 
+# Product Form
 class ProductForm(forms.ModelForm):
 
-    main_color = forms.ModelChoiceField(queryset=Color.objects.all(), widget=forms.Select, required=False)
-    wording_color = forms.ModelChoiceField(queryset=Color.objects.all(), widget=forms.Select, required=False)
+    main_color = forms.ModelChoiceField(
+        queryset=Color.objects.all(), widget=forms.Select, required=False)
+    wording_color = forms.ModelChoiceField(
+        queryset=Color.objects.all(), widget=forms.Select, required=False)
     writing = forms.CharField(max_length=100, required=False)
 
     class Meta:
@@ -16,7 +19,8 @@ class ProductForm(forms.ModelForm):
             'image': CustomClearableFileInput,
         }
 
-    image = forms.ImageField(label='Image', required=False, widget=CustomClearableFileInput)
+    image = forms.ImageField(
+        label='Image', required=False, widget=CustomClearableFileInput)
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)

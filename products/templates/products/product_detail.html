@@ -1,6 +1,9 @@
 {% extends "base.html" %}
 {% load static %}
 
+<!-- Product Detail HTML -->
+
+<!-- Header -->
 {% block page_header %}
 <div class="container header-container">
     <div class="row">
@@ -9,6 +12,7 @@
 </div>
 {% endblock %}
 
+<!-- Main content container -->
 {% block content %}
 <div class="overlay"></div>
 <div class="container-fluid">
@@ -16,6 +20,7 @@
         <h2 class="logo-font text-white">Product Details</h2>
         <hr class="w-50 mb-1">
     </div>
+    <!-- Product Images -->
     <div class="row">
         <div class="col-12 col-md-6 col-lg-4 offset-lg-2">
             <div id="product-image" class="card my-5">
@@ -36,6 +41,7 @@
                 </div>
             </div>
         </div>
+        <!-- Product Detais -->
         <div class="col-12 col-md-6 col-lg-4">
             <div id="details" class="card product-details-container mb-5 mt-md-5">
                 <div class="card-body">
@@ -70,6 +76,7 @@
                             <div class="form-group ">
                                 <label for="main-color">Main Colour:</label>
                                 <select class="form-control" id="main-color" name="main_color">
+                                    <!-- Need to finish coloured backgrounds -->
                                     {% for color in form.fields.main_color.queryset %}
                                     <option value="{{ color.id }}">
                                         <span class="color-option" style="background-color: {{ color.code }}"></span>
@@ -79,6 +86,7 @@
                                 </select>
                                 <label for="wording-color">Wording Colour:</label>
                                 <select class="form-control" id="wording-color" name="wording_color">
+                                    <!-- Need to finish coloured backgrounds -->
                                     {% for color in form.fields.wording_color.queryset %}
                                     <option value="{{ color.id }}">
                                         <span class="color-option" style="background-color: {{ color.code }}"></span>
@@ -92,6 +100,7 @@
                                 </div>
                             </div>
                             {% endif %}
+                            <!-- Product Sizes -->
                             {% with product.has_sizes as s %}
                             {% if s %}
                             <div class="col-12">
@@ -105,6 +114,7 @@
                                 </select>
                             </div>
                             {% endif %}
+                            <!-- Product Quantity -->
                             <div class="col-12">
                                 <p><strong>Quantity:</strong></p>
                                 <div class="form-group w-50">
@@ -157,6 +167,7 @@
 {% block postloadjs %}
 {{ block.super }}
 <script type="text/javascript">
+    // Colour dropdown triggers
     $(document).ready(function () {
         $('.dropdown-trigger').click(function () {
             $(this).next('.dropdown-content').toggle();

@@ -8,6 +8,7 @@ from django_countries.fields import CountryField
 # Create models
 
 
+#User profile model
 class UserProfile(models.Model):
     """
     A user profile model for maintaining default

@@ -2,6 +2,9 @@
 {% load static %}
 {% load bag_tools %}
 
+<!-- Bag HTML -->
+
+<!-- Header -->
 {% block page_header %}
 <div class="container header-container">
     <div class="row">
@@ -10,6 +13,7 @@
 </div>
 {% endblock %}
 
+<!-- Main content container -->
 {% block content %}
 <div class="overlay"></div>
 <div class="container">
@@ -20,6 +24,7 @@
         </div>
     </div>
 
+    <!-- Bag contents -->
     <div class="row">
         <div class="col">
             {% if bag_items %}
@@ -102,6 +107,8 @@
                 {% include "bag/checkout-buttons.html" %}
             </div>
             {% else %}
+
+            <!-- Bag if empty -->
             <div class="text-center mt-5 mb-5">
                 <p class="lead mb-5 logo-font text-white">Your bag is empty.</p>
                 <a href="{% url 'products' %}" class="btn btn-outline-black logo-font rounded-0 btn-lg">

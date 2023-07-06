@@ -1,6 +1,9 @@
 {% extends "base.html" %}
 {% load static %}
 
+<!-- Product HTML -->
+
+<!-- Header -->
 {% block page_header %}
 <div class="container header-container">
     <div class="row">
@@ -9,6 +12,7 @@
 </div>
 {% endblock %}
 
+<!-- Main content container -->
 {% block content %}
 <div class="overlay"></div>
 <div class="container-fluid">
@@ -24,6 +28,7 @@
             <hr class="w-50 mb-1">
         </div>
     </div>
+    <!-- Product sort by-->
     <div class="row">
         <div class="product-container col-10 offset-1">
             <div class="row mt-1 mb-2">
@@ -62,6 +67,7 @@
                     </p>
                 </div>
             </div>
+            <!-- Product Images -->
             <div class="row">
                 {% for product in products %}
                 <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3 mb-1">
@@ -77,6 +83,7 @@
                                 alt="{{ product.name }}" style="width: 100%; height: 300px;">
                         </a>
                         {% endif %}
+                        <!-- Product Details -->
                         <div class="card-body pb-0">
                             <p class="mb-0 font-weight-bold">{{ product.name }}</p>
                         </div>
@@ -135,7 +142,8 @@
         </div>
     </div>
 </div>
-<div class="btt-button shadow-sm rounded-0 border border-black">
+<!-- Back to top button -->
+<div class="btt-button shadow-sm rounded-0 border border-black d-lg-block d-none">
     <a class="btt-link d-flex h-100">
         <i class="fas fa-arrow-up text-white mx-auto my-auto"></i>
     </a>
@@ -152,6 +160,7 @@
 
 <script type="text/javascript">
     $('#sort-selector').change(function () {
+        // Sort selector
         var selector = $(this);
         var currentUrl = new URL(window.location);
 

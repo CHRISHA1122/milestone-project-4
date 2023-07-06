@@ -1,10 +1,14 @@
 {% extends "base.html" %}
 {% load static %}
 
+<!-- Checkout Success HTML -->
+
+<!-- Extra CSS -->
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}">
 {% endblock %}
 
+<!-- Header -->
 {% block page_header %}
 <div class="container header-container">
     <div class="row">
@@ -13,8 +17,10 @@
 </div>
 {% endblock %}
 
+<!-- Main content container -->
 {% block content %}
 <div class="overlay"></div>
+<!-- Success message -->
 <div class="container">
     <div class="row">
         <div class="col text-center mt-3">
@@ -24,6 +30,7 @@
         </div>
     </div>
 
+    <!-- Order Details -->
     <div class="row  justify-content-center">
         <div class="card col-12 col-lg-7">
             <div class="order-confirmation-wrapper p-2 border">
@@ -67,7 +74,8 @@
                             <br>
                             {% if item.main_color %}Colour: {{ item.main_color.name }}{% else %}N/A{% endif %}
                             <br>
-                            {% if item.wording_color %}Wording Colour: {{ item.wording_color.name }}{% else %}N/A{% endif %}
+                            {% if item.wording_color %}Wording Colour:
+                            {{ item.wording_color.name }}{% else %}N/A{% endif %}
                             <br>
                             {% if item.writing %}Writing: {{ item.writing }}{% else %}N/A{% endif %}
                         </p>
@@ -78,6 +86,7 @@
                 </div>
                 {% endfor %}
 
+                <!-- Personal/Delivery Info -->
                 <div class="row">
                     <div class="col">
                         <small class="text-muted logo-font">Delivering To:</small>
@@ -177,6 +186,7 @@
                     </div>
                 </div>
 
+                <!-- Order Total -->
                 <div class="row">
                     <div class="col-12 col-md-4">
                         <p class="mb-0 text-black font-weight-bold">Delivery</p>

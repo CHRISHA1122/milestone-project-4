@@ -5,6 +5,7 @@ from products.models import Product, Color
 
 
 def bag_contents(request):
+    # Handles bag contents
 
     bag_items = []
     total = 0
@@ -23,15 +24,18 @@ def bag_contents(request):
 
         items_by_size = item_data.get('items_by_size')
 
-        if 'items_by_size' in item_data and isinstance(items_by_size, dict):  # Handle products with sizes
+        # Handle products with sizes
+        if 'items_by_size' in item_data and isinstance(items_by_size, dict):
             for size, quantity in item_data['items_by_size'].items():
                 if product.customizable:
                     main_color_id = item_data.get('main_color')
                     wording_color_id = item_data.get('wording_color')
                     writing = item_data.get('writing')
 
-                    main_color = get_object_or_404(Color, pk=main_color_id) if main_color_id else None
-                    wording_color = get_object_or_404(Color, pk=wording_color_id) if wording_color_id else None
+                    main_color = get_object_or_404(
+                        Color, pk=main_color_id) if main_color_id else None
+                    wording_color = get_object_or_404(
+                        Color, pk=wording_color_id) if wording_color_id else None
 
                     bag_items.append({
                         'item_id': item_id,
@@ -63,8 +67,10 @@ def bag_contents(request):
                 wording_color_id = item_data.get('wording_color')
                 writing = item_data.get('writing')
 
-                main_color = get_object_or_404(Color, pk=main_color_id) if main_color_id else None
-                wording_color = get_object_or_404(Color, pk=wording_color_id) if wording_color_id else None
+                main_color = get_object_or_404(
+                    Color, pk=main_color_id) if main_color_id else None
+                wording_color = get_object_or_404(
+                    Color, pk=wording_color_id) if wording_color_id else None
 
                 bag_items.append({
                     'item_id': item_id,
