@@ -67,9 +67,9 @@ If you would like to test the payment functionality please feel free to do so by
 * I want potential users to know from the start what the site's purpose is.
 * I want potential users to be able to register for an account.
 * I want existing users to be able to be able to login.
-* I want to add products.
-* I want to edit/update products.
-* I want to be able to delete products.
+* I want to add products utilizing the site or django admin.
+* I want to edit/update products utilizing the site or django admin.
+* I want to be able to delete products utilizing the site or django admin.
 
 ## User Experience - UX
 
